@@ -1,27 +1,14 @@
-# -*- coding: utf-8 -*-
-# <nbformat>3.0</nbformat>
-
-# <codecell>
-
 g = open('/Users/DValenzano/Dropbox/tmp/NfGn_reduced_ped.csv', 'rU').read()
 gs = g.split('fam')
 keys = gs[0].split(',')[9:]
 
-# <codecell>
-
 keys= keys[:-1]+[keys[-1][:-1]] #the last element had a \n attached to it!!
-
-# <codecell>
 
 values = []
 for i in range(9, len(gs[0].split(','))):
                values.append(gs[1].split('\n')[0].split(',')[i]+gs[1].split('\n')[1].split(',')[i])
 
-# <codecell>
-
 d = dict(zip(keys, values)) # A dictionary that goes like this: { '8563': 'aabb', '63406': 'aabb', ...}
-
-# <codecell>
 
 # Alternatively, I will make another dictionary for the F1s as well:
 valuesf1f = []
@@ -33,12 +20,8 @@ for i in range(9, len(gs[0].split(','))):
 for i in range(9, len(gs[0].split(','))):
     valuesf1m.append(gs[1].split('\n')[3].split(',')[i])       
 
-# <codecell>
-
 df1f = dict(zip(keys, valuesf1f)) #dictionaries are not sorted, so can't be sliced 
 df1m = dict(zip(keys, valuesf1m))
-
-# <codecell>
 
 f1f = [] #this returns the F1 female values
 for i in keys:
@@ -61,10 +44,4 @@ for i in keys:
         f1m.append(df1m[i])
         
 
-# <codecell>
-
 f1m[:10]
-
-# <codecell>
-
-
