@@ -43,5 +43,17 @@ for i in keys:
     else:
         f1m.append(df1m[i])
         
+ls = []
+for i in range(len(gs[1].split('\n'))):
+    if i in [0,1]+range(4, len(gs[1].split('\n'))):
+        ls.append(gs[1].split('\n')[i]+'\n')
+    elif i == 2:
+        ls.append(','.join(gs[1].split('\n')[i].split(',')[:9]+f1f)+'\n')
+    elif i == 3:
+        ls.append(','.join(gs[1].split('\n')[i].split(',')[:9]+f1m)+'\n')
+        
+lsj = ','.join(ls).replace('\n,','\n')
 
-f1m[:10]
+z = open('/Users/DValenzano/Dropbox/tmp/prova.csv', 'w')
+z.write(lsj)
+z.close()
