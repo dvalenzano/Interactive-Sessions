@@ -53,8 +53,9 @@ for f in range(1, len(gs)):
     elif i == 3:
       ls.append(','.join(gs[f].split('\n')[i].split(',')[:9]+f1m)+'\n')
         
-  lsj = ','.join(ls).replace('\n,','\n')
-
+  #  lsj = ','.join(ls).replace('\n,','\n')
+  lsj = gs[0]+','.join(ls).replace('\n,','\n')
+  
   currentfamily = '/Users/DValenzano/Dropbox/tmp/inferred_fam_%s.csv' % gs[f].split('\n')[0].split(',')[0]
   z = open(currentfamily, 'w') 
   z.write(lsj)
