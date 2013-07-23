@@ -58,7 +58,7 @@ ls4 = []
 for i in ls3:
   ls4.append(','.join(i)+'\n')
 ls5 = ','.join(ls4).replace('\n,', '\n')
-
+ls5 = ls5.replace('family', '')
 
 
 z = open('/Users/DValenzano/Dropbox/tmp/NfGn_reducednew_ped.csv','w')
