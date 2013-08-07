@@ -86,9 +86,9 @@ for i in lst2[9:]: #only import the array starting from the genotype rows
         lambda_075 = float(.75*(a+b))
         lambda_025 = float(.25*(a+b))
             
-        Poi_05 = ((lambda_05**a)*(exp(-(lambda_05))))/math.factorial(a)
-        Poi_075 = ((lambda_075**a)*(exp(-(lambda_075))))/math.factorial(a)
-        Poi_025 = ((lambda_025**a)*(exp(-(lambda_025))))/math.factorial(a)
+        Poi_05 = ((lambda_05**a)*(math.exp(-(lambda_05))))/math.factorial(a)
+        Poi_075 = ((lambda_075**a)*(math.exp(-(lambda_075))))/math.factorial(a)
+        Poi_025 = ((lambda_025**a)*(math.exp(-(lambda_025))))/math.factorial(a)
             
         ############## F1 inference #################
             
