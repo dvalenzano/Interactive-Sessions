@@ -47,7 +47,7 @@ notmissingf1st = ','.join(notmissingf1s)
 
 
 
-print 'missingbf1s\'s length is: %s lines\nmissing1f1s\'s length is: %s lines\nmissing2f1s\'s length is: %s lines\nnotmissingf1s\'s length is: %s'  %(len(missingbf1s), len(missing1f1s), len(missing2f1s), len(notmissingf1s))
+# print 'missingbf1s\'s length is: %s lines\nmissing1f1s\'s length is: %s lines\nmissing2f1s\'s length is: %s lines\nnotmissingf1s\'s length is: %s'  %(len(missingbf1s), len(missing1f1s), len(missing2f1s), len(notmissingf1s))
 
 
 
@@ -173,7 +173,7 @@ for i in lst2[9:]: #only import the array starting from the genotype rows
 
 
 
-len(lz)
+# len(lz)
 
 
 
