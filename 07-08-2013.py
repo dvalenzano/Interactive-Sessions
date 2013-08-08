@@ -10,7 +10,7 @@ ls = []
 for i in fam_1dot1.split('\n'):
     ls.append(i.split(','))
 
-ls = ls[:-2]
+# ls = ls[:-2]
 
 lst = zip(*ls) #transpose the matrix and creates a list of tuples
 
