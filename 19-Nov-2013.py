@@ -123,7 +123,7 @@ lsj2 = ','.join(lsj).replace('\n,','\n')[:-1]
 
 # <codecell>
 
-aao2 = aaols0+','.join(aaols[1])+'\n'+lsj2
+aao2 = aaols0+'\n'+','.join(aaols[1])+'\n'+lsj2
 
 # <codecell>
 
