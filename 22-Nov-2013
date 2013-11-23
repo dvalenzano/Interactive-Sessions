@@ -1,0 +1,47 @@
+# -*- coding: utf-8 -*-
+# <nbformat>3.0</nbformat>
+
+# <headingcell level=1>
+
+# Goal: to convert phenotype + genotype files from crosses to ped files
+
+# <codecell>
+
+goped = open('/Volumes/group_dv/personal/DValenzano/Nov2013/go_phen_2.csv', 'rU').read()
+aaoped = open('/Volumes/group_dv/personal/DValenzano/Nov2013/aao_phen_2.csv', 'rU').read()
+gopeds = goped.split('\n')[2:]
+aaopeds = aaoped.split('\n')[2:]
+
+# <codecell>
+
+def myfun(input):
+  return input.split(',')[2]
+
+gopedss = sorted(gopeds, key=myfun) 
+aaopedss = sorted(aaopeds, key=myfun)
+
+# <codecell>
+
+gopedssj = ','.join([ i+'\n'   for i in gopedss ]).replace('\n,','\n')
+aaopedssj = ','.join([ i+'\n'   for i in aaopedss ]).replace('\n,','\n')
+
+goped0 = ','.join([  i+'\n' for i in goped.split('\n')[:2]]).replace('\n,','\n')
+aaoped0 = ','.join([  i+'\n' for i in aaoped.split('\n')[:2]]).replace('\n,','\n')
+
+gopedf = goped0+gopedssj
+aaopedf = aaoped0+aaopedssj
+
+y = open('/Volumes/group_dv/personal/DValenzano/Nov2013/goped0.csv', 'w')
+y.write(gopedf)
+y.close()
+z = open('/Volumes/group_dv/personal/DValenzano/Nov2013/aaoped0.csv', 'w')
+z.write(aaopedf)
+z.close()
+
+#z = open('NfGn_allpg_t2.csv', 'w')
+#z.write(gtf)
+#z.close()
+
+# <codecell>
+
+
