@@ -58,7 +58,7 @@ z.close()
 # <codecell>
 
 aaoartsex = ','.join(aaoart[5]).replace('m', '1').replace('f', '2').replace('12', 'mf')
-aaoartcol = ','.join(aaoart[8]).replace('y', '1').replace('r', '2').replace('col12', 'col')
+aaoartcol = ','.join(aaoart[8]).replace('y', '1').replace('r', '2').replace('col212', 'col')
 aaoartb = ','.join(aaoart[9]).replace('nb', '2').replace('b', '1').replace('col_1.2', 'bl')
 aaof = aaoart[:5]+[tuple(aaoartsex.split(','))]+[tuple(aaoartcol.split(','))]+[tuple(aaoartb.split(','))]+aaoart[10:]
 
