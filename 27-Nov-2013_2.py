@@ -370,6 +370,5 @@ for file in files:
     z.write(lwt4)
     z.close()
 
-# <codecell>
 
 
