@@ -1,11 +1,5 @@
-# -*- coding: utf-8 -*-
-# <nbformat>3.0</nbformat>
-
-# <headingcell level=1>
-
 # Goal: to infer all the F1 genotypes following the 08-Aug-2013 ipython session
 
-# <codecell>
 
 import math
 import numpy
