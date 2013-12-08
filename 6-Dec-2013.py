@@ -31,7 +31,7 @@ go1t = zip(*[ i.split(',')  for i in go1.split('\n')[:-1]])
 
 # <codecell>
 
-Id = []
+ID = []
 p0 = []
 f1 = []
 f2 = []
@@ -93,7 +93,7 @@ for i in oddF1_bb:
     if 'aa' in d[i]:
         odd_ID_bb.append(i.split(',')[0])
 
-# <markdowncell>
+# <headingcell level=3>
 
 # Now I need to consider the case where P0 are 'aaab' or 'abaa'
 
@@ -206,6 +206,53 @@ print (
 
 # <codecell>
 
+odd_ID_p0aaab_f1aaaa = []
+odd_ID_p0aaab_f1bbbb = []
+odd_ID_p0aaab_f1aabb = []
+odd_ID_p0aaab_f1bbaa = []
+odd_ID_p0aaab_f1aaab = []
+odd_ID_p0aaab_f1abaa = []
+odd_ID_p0aaab_f1abab = []
+odd_ID_p0aaab_f1abbb = []
+odd_ID_p0aaab_f1bbab = []
+
+for i in p0aaab_f1aaaa:
+    if 'bb' in df2[i]:
+        odd_ID_p0aaab_f1aaaa.append(i.split(',')[0])
+    elif 'ab' in df2[i]:
+        odd_ID_p0aaab_f1aaaa.append(i.split(',')[0])    #These F1 genotypes now need to be changed
+        
+for i in p0aaab_f1aaab:
+    if 'bb' in df2[i]:
+        odd_ID_p0aaab_f1aaab.append(i.split(',')[0])
+        
+for i in p0aaab_f1abaa:
+    if 'bb' in df2[i]:
+        odd_ID_p0aaab_f1abaa.append(i.split(',')[0])        
+
+for i in p0aaab_f1bbab:
+    if 'aa' in df2[i]:
+        odd_ID_p0aaab_f1bbab.append(i.split(',')[0])        
+        
+odd_ID_p0abaa_f1aaaa = []
+odd_ID_p0abaa_f1bbbb = []
+odd_ID_p0abaa_f1aabb = []
+odd_ID_p0abaa_f1bbaa = []
+odd_ID_p0abaa_f1aaab = []
+odd_ID_p0abaa_f1abaa = []
+odd_ID_p0abaa_f1abab = []
+odd_ID_p0abaa_f1abbb = []
+odd_ID_p0abaa_f1bbab = []
+
+for i in p0abaa_f1aaaa:
+    if 'bb' in df2[i]:
+        odd_ID_p0abaa_f1aaaa.append(i.split(',')[0])
+    elif 'ab' in df2[i]:
+        odd_ID_p0abaa_f1aaaa.append(i.split(',')[0])    
+
+# <codecell>
+
+odd_ID_p0abaa_f1bbab
 
 # <codecell>
 
