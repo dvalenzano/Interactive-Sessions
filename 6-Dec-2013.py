@@ -1,26 +1,37 @@
-# -*- coding: utf-8 -*-
-# <nbformat>3.0</nbformat>
+## As always, all this scripts are saved in my [github](https://github.com/dvalenzano) personal page
 
-# <headingcell level=2>
+## Goal: to filter for mis-coded F1/F2 genotypes, derived from situations like the following:
 
-# # Goal: to filter for mis-coded F1/F2 genotypes, derived from situations like the following:
-# # 
-# # P0: aaxbb
-# # F1: *bb*
-# # F2: *aa*
-# # 
-# # P0: aaxbb
-# # F1: *aa*
-# # F2: *bb*
-# # 
-# # P0: aaxab
-# # F1: aaxab
-# # F2: *bb*
-# # 
-# # P0: aaxab
-# # F1: *bb*
-# # F2: *aa* 
+## P0: aaxbb
+## F1: *bb*
+## F2: *aa*
 
+## P0: aaxbb
+## F1: *aa*
+## F2: *bb*
+
+## Rationale: if there are 'bb' or 'aa' genotypes in the F1 from aabb P0 parents, then I do not expect to have 'aa' and 'bb' genotypes respectively in the F2 genotypes. So what do I do if I do have 'aa' in an F2 from a 'bbab' F1 genotype? Here's the thing: I can use likelyhood ratio test.   
+## Example: P0= aabb; F1=abaa; and I do find one F2 with a 'bb' genotype, which is not expected given the parents' genotypes. Now it could be that either one of the F1 is mis-typed, or that the F2 is mistyped. How do I know what's wrong? Given abaa F1, I expect to have 3a:1b in the F2. If, in fact, the F2 have a 3a:1b ratio, than most likely the 'bb' F2 is just mis-typed and I will correct it to 'ab'. However, if the allele frequency in the F2 is 1a:1b, then most likely one F1 genotype is wrong, and rather than being aaab, or abaa, it's actually abab. 
+
+## Similar approach applies for the following genotypes:
+
+## P0: aaxab
+## F1: aaxab
+## F2: *bb*
+
+## P0: aaxab
+## F1: *bb*
+## F2: *aa* 
+
+
+## So here are the steps and the pseudocode:
+
+## For each family
+## Find the mismatching F1-F2 genotypes  
+## Save the IDs  
+## measure the allele frequency for these markers 
+## if the allele frequency is compatible with the F1 model (run likelihood ratio test), then modify the F2 genotype  
+## elsif the allele frequency is incompatible with the F1 model (run likelihood ratio test), then re-type F1 alleles 
 # <codecell>
 
 go1 = open('/Users/dvalenzano/Downloads/inf_famGo/inf_fam_1.csv', 'rU').read()
