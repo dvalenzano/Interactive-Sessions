@@ -458,3 +458,150 @@ z.close()
 # <codecell>
 
 
+# -*- coding: utf-8 -*-
+# <nbformat>3.0</nbformat>
+
+# <markdowncell>
+
+
+
+
+
+############################################################################################################################
+############################################################################################################################
+##########              THIS CODE BELOW ITERATES THE CODE ABOVE OVER ALL THE FAMILIES FOR CROSS Go      ####################       
+############################################################################################################################
+############################################################################################################################
+# This runs the last inference piece of code on the already inferred genotypes which were produced as output of 28-Nov-2013.py
+
+# <codecell>
+
+import math
+
+def lrt(input):
+    d = count_allele(input)
+    a = d['a']
+    b = d['b']
+    freq_a = float(a)/(a+b)
+    freq_b = 1-freq_a
+    MLE_ab = (freq_a**a)*(freq_b**b)
+    MLE_075 = (.75**a)*(.25**b) 
+    LRT = 2*(math.log(MLE_ab)-math.log(MLE_075))
+    LOD = math.log10(MLE_ab/MLE_075)
+    p_val = 1.0/(10**(LOD))
+#    out = i.split(',')[0]+':' + '\t'+str(LRT)+'\t'+str(LOD)+'\t'+str(p_val)+'\n'
+#    ls.append(out)
+#  return 'Marker'+'\tLRT\tLOD\tp_val\n'+','.join(ls)[:-1].replace('\n,','\n') 
+    return p_val
+
+lst = open('/Volumes/group_dv/personal/DValenzano/Dec2013/Go-list.txt', 'rU').read()
+
+# <codecell>
+
+for fam in lst.split('\n')[:-1]:
+    
+    go1 = open(fam, 'rU').read()
+    go1t = zip(*[ i.split(',')  for i in go1.split('\n')[:-1]])
+    
+    ID = []
+    p0 = []
+    f1 = []
+    f2 = []
+    p0f1 = []
+    f1f2 = []
+    keys = []
+    aL = []
+    
+
+    for i in go1t[10:]:
+            ID.append(i[0])
+            p0.append(i[1]+i[2])
+            f1.append(i[3]+i[4])
+            p0f1.append(i[1]+i[2]+i[3]+i[4])
+            f2.append(','.join(i[5:]).split(','))
+            f1f2.append(','.join(i[3:]).split(','))
+            keys.append(i[0]+','+i[1]+i[2]+','+i[3]+','+i[4])
+            aL.append(','.join(i).split(','))
+    
+    d = dict(zip(keys, f2))
+    df2 = dict(zip(ID, f2))
+    df1f2 = dict(zip(ID, f1f2))
+    df1 = dict(zip(ID, f1))
+    daL = dict(zip(ID, aL))
+    
+    q = []
+    for i in ID:
+        if df1[i] == 'abbb':
+            q.append(i)
+            
+    len(q) # this q is the list of F1 that have 'abbb' genotypes
+    
+    def count_allele(input): #the input here is an ID
+        al = ['a','b']
+        values = 2*df2[input].count('aa')+df2[input].count('ab'), 2*df2[input].count('bb')+df2[input].count('ab')
+        return dict(zip(al, values))
+    
+    P0_aabb = []
+    for i in keys:
+        if i.split(',')[1] == 'aabb':
+            P0_aabb.append(i)
+            
+    P0_aabb_2 = []
+    for i in keys:
+        if i.split(',')[1] == 'aabb':
+            P0_aabb_2.append(i.split(',')[0])
+    
+    new_P0_aabb_2 = []
+    for i in P0_aabb_2:
+        new_P0_aabb_2.append([i]+['aa', 'bb', 'ab','ab']+df2[i])
+        
+    P0_3a1b = []
+    for i in keys:
+        if i.split(',')[1] == 'abaa': # P0 is 'abaa'
+            if (i.split(',')[2]+i.split(',')[3]) != 'abab': #F1 is not 'abab'
+                if 'bb' in df2[i.split(',')[0]]:
+                    P0_3a1b.append(i)
+        elif i.split(',')[1] == 'aaab':
+            if (i.split(',')[2]+i.split(',')[3]) != 'abab': # P0 is 'abaa'
+                if 'bb' in df2[i.split(',')[0]]: # F1 is not 'abab'
+                    P0_3a1b.append(i)
+                    
+    ls_ac = []
+    ls_nac = []
+    
+    for i in P0_3a1b:
+        if lrt(i.split(',')[0]) > 0.05:    
+            ls_ac.append(i.split(',')[0])  #ls_ac are the ones that have been accurately typed as 'abaa' or 'aaab' as F1
+        else:
+            ls_nac.append(i.split(',')[0]) #ls_nac are the ones that have not been accurately typed as 'abaa' or 'aaab' as F1
+            
+    final = []
+    for i in ID:
+        if i in P0_aabb_2: #this lines fixes a bug, above a had 'if i in new_P0_aabb_2:'
+            final.append([i]+['aa', 'bb', 'ab','ab']+df2[i])
+        elif i in ls_nac:
+            final.append(daL[i][:3]+['ab','ab']+df2[i])
+        else:
+            final.append(daL[i])
+            
+    lgot = []
+    for i in go1t[:10]:
+        lgot.append(','.join(i).split(','))
+        
+    final2 = lgot + final
+    
+    finalt = zip(*final2)
+    fin = [ ','.join(','.join(i).split(',')+['\n']) for i in finalt ]
+    finj = ','.join(fin).replace(',\n','\n').replace('\n,','\n')
+    
+    output = '/Volumes/group_dv/personal/DValenzano/Dec2013/n-'+fam[46:]
+    
+    z = open(output, 'w')
+    z.write(finj)
+    z.close()
+
+# <codecell>
+
+
+
+
