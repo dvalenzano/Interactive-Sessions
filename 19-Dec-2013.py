@@ -3,20 +3,20 @@ import numpy
 import scipy
 
 input = open('/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferred-list.txt', 'rU').read() #inferred-list.txt is a file that contains all the paths to the inferred files:
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_1.1.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_1.2.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_1.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_10.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_13.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_14.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_16.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_2.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_4.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_5.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_7.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_7.1.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_8.csv
-#/Volumes/group_dv/personal/DValenzano/Nov2013/Go_families/inferrednew_fam_9.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_1.1.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_1.2.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_1.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_10.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_13.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_14.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_16.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_2.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_4.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_5.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_7.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_7.1.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_8.csv
+#/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inferrednew_fam_9.csv
 
 files = input.split('\n')[:-1]
 
@@ -238,7 +238,7 @@ for fl in files:
                                 
                     nac_bbbb = []
                     ac_bbbb = []
-                    for i in f1bbbb:
+                    for j in f1bbbb:
                         if 'aa' in df2[j]:
                             nac_bbbb.append(j) 
                         elif 'ab' in df2[j]:
@@ -343,7 +343,7 @@ for fl in files:
         lwt3.append(','.join(i)+'\n')
         
     lwt4 = ','.join(lwt3).replace('\n,', '\n')
-    output = '/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inf'+fl[69:]                  
+    output = '/Volumes/group_dv/personal/DValenzano/Dec2013/F1-inference/Go_families/inf'+fl[84:]                  
     z = open(output,'w')
     z.write(lwt4)
     z.close()
