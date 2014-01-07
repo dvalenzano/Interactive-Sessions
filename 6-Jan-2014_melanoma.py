@@ -1,6 +1,13 @@
+# -*- coding: utf-8 -*-
+# <nbformat>3.0</nbformat>
+
+# <codecell>
+
 import random
 import sys
-sys.path.append('/Users/dvalenzano/Dropbox/tmp/lrt_melanoma.py')
+sys.path.append('/Users/dvalenzano/Dropbox/tmp')
+
+import lrt_melanoma
 
 r_btj = open('/Users/dvalenzano/Dropbox/tmp/red-big.csv', 'rU').read()
 big = bigmatrix = open('/Users/dvalenzano/Dropbox/tmp/Go_allfam_2.csv', 'rU').read()
@@ -40,8 +47,31 @@ for i in boot_0:
 
 ls2 = ','.join(ls).replace('\p,','\p')[:-1] # I am joining all together in a big string that can be broken down at '\p'
 
-z = open('/Users/dvalenzano/Desktop/prova.csv', 'w')
+z = open('/Users/DValenzano/Desktop/prova.csv', 'w')
 z.write(ls2)
 z.close()
 
-attempt = lrt.out(boot_m.split('\p')[0])
+# <markdowncell>
+
+# Now transpose each matrix in ls2
+
+# <codecell>
+
+attempt = lrt_melanoma.out(ls2.split('\p')[0])    
+
+# <codecell>
+
+lz = []
+for i in ls2.split('\p'):
+    lz.append(lrt_melanoma.out(i)+'\New')
+lzj = ','.join(lz).replace('\New,','\New')
+
+# <codecell>
+
+z = open('/Users/DValenzano/Desktop/lrt_m_out.csv', 'w')
+z.write(lzj)
+z.close()
+
+# <codecell>
+
+
