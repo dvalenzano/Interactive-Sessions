@@ -72,6 +72,7 @@ for i in open(Go_fam16_Out):
     else:
         w.write(','.join([i.split(',')[0]]+[D[i.split(',')[0].split('-')[0]]+'_'+D[i.split(',')[0].split('-')[1]]]+i.split(',')[1:]))
    
+w.close()
 
 # <codecell>
 
