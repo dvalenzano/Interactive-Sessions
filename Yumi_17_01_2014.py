@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+
+# The goal of this script is to generate a new exome file that contains - in the header - 
+# the size of the exon itself. That's all. The only problem is that this requires to open 
+# the whole file first, which can be huge. That's why I started developing a slightly different 
+# code in the beginning of the file, which does not require the big exome file to be read by the 
+# read() function. This is now commented out, but should work as well so do not discard. 
+
 # <nbformat>3.0</nbformat>
 
 # <codecell>
