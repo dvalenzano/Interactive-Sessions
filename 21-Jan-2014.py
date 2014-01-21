@@ -63,7 +63,7 @@ lx
 
 import math
 lS = ['Marker\tLRT\tLOD\tp_val\n']
-for i in gosf[2:]:
+for i in gosF[2:]:
     a = ','.join(i.split(',')[2:]).count('a')
     b = ','.join(i.split(',')[2:]).count('b')
     if a and b > 0:
