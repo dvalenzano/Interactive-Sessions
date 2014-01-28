@@ -7,7 +7,7 @@ f7 = open('/Volumes/group_dv/personal/DValenzano/Jan2014/F1_inference/inferredne
 
 # <codecell>
 
-f7s = zip(*[ i.split(',') for i in f7.split('\n')[:-1]])
+f7s = zip(*[ i.split(',') for i in f7.split('\n')[:-2]])
 
 # <markdowncell>
 
@@ -15,19 +15,19 @@ f7s = zip(*[ i.split(',') for i in f7.split('\n')[:-1]])
 
 # <codecell>
 
-#ls = []
-#for i in f7t[10:]:
-#    ls.append([i[0]]+[i[3]+'-'+i[4]]+list(i[5:]))
+ls = []
+for i in f7s[10:]:
+    ls.append([i[0]]+[i[3]+'-'+i[4]]+list(i[5:]))
 
 # <codecell>
 
-#lz = []
-#for i in ls:
-#    lz.append(','.join(i)+'\n')
+lz = []
+for i in ls:
+    lz.append(','.join(i)+'\n')
 
 # <codecell>
 
-#lz2 = ','.join(lz).replace('\n,','\n')
+lz2 = ','.join(lz).replace('\n,','\n')
 
 # <codecell>
 
@@ -86,7 +86,41 @@ for i in lz2.split('\n')[:-1]:
         aabbf1.append(i)
 aabbf1 = [i.split(',')[0] for i in aabbf1 ]
 
-weird = aabbf1+abbbf1+bbaaf1+bbabf1
+ab0f1 = []
+for i in lz2.split('\n')[:-1]:
+    if i.split(',')[1]== 'ab-0':
+        ab0f1.append(i)
+ab0f1 = [i.split(',')[0] for i in ab0f1 ]
+
+aa0f1 = []
+for i in lz2.split('\n')[:-1]:
+    if i.split(',')[1]== 'aa0':
+        aa0f1.append(i)
+aa0f1 = [i.split(',')[0] for i in aa0f1 ]
+
+oof1 = []
+for i in lz2.split('\n')[:-1]:
+    if i.split(',')[1]== '0-0':
+        oof1.append(i)
+oof1 = [i.split(',')[0] for i in oof1 ]
+
+ac0f1 = []
+for i in lz2.split('\n')[:-1]:
+    if i.split(',')[1]== 'ac-0':
+        ac0f1.append(i)
+ac0f1 = [i.split(',')[0] for i in ac0f1 ]
+
+bb0f1 = []
+for i in lz2.split('\n')[:-1]:
+    if i.split(',')[1]== 'bb-0':
+        bb0f1.append(i)
+bb0f1 = [i.split(',')[0] for i in bb0f1 ]
+
+weird = aabbf1+abbbf1+bbaaf1+bbabf1+ab0f1+aa0f1+oof1+bb0f1
+
+# <codecell>
+
+len(weird)
 
 # <codecell>
 
@@ -96,7 +130,7 @@ good = [i.split(',')[0] for i in lz if i.split(',')[0] not in weird]
 
 # <codecell>
 
-final = weird + random.sample(good, 86)
+final = weird + random.sample(good, 1606)
 
 # <codecell>
 
