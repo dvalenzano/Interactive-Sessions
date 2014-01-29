@@ -7,7 +7,7 @@ tr = open('/Volumes/group_dv/group/data/sequences/transcriptome/Annotated_Refere
 
 # <codecell>
 
-tr2 = tr.replace('>', '\m>')
+tr2 = tr.replace('>', '\m>').replace(' ', '')
 tr2s = tr2.split('\m')
 tr3 = list(set(tr2s))
 
