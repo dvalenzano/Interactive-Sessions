@@ -25,10 +25,34 @@ len(tr)-len(tr4)
 
 # <codecell>
 
-z = open('/Volumes/group_dv/group/data/sequences/transcriptome/Nfur_transcriptome_reduced.fa', 'w')
-z.write(tr4)
-z.close()
+#z = open('/Volumes/group_dv/group/data/sequences/transcriptome/Nfur_transcriptome_reduced.fa', 'w')
+#z.write(tr4)
+#z.close()
 
 # <codecell>
 
+keys = tr.split('\n')[:-1][::2]
+values = tr.split('\n')[:-1][1::2]
+d = dict(zip(keys, values))
+
+# <codecell>
+
+keyss = set(keys)
+
+# <codecell>
+
+len(keys)==len(keyss)
+
+# <codecell>
+
+ls = []
+for i in keyss:
+    ls.append(i+'\n'+d[i]+'\n')
+lsj = ','.join(ls).replace('\n,','\n').replace(',','')
+
+# <codecell>
+
+z = open('/Volumes/group_dv/group/data/sequences/transcriptome/Nfur_transcriptome_reduced.fa', 'w')
+z.write(lsj)
+z.close()
 
