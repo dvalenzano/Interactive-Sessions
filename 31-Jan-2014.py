@@ -209,10 +209,10 @@ for fl in files:
     #                        lz.append(','.join(i.split(',')[:3]+['bb']+i.split(',')[4:])) #given that the male is 'aa', then the female got to be 'bb'
                             lz.append(','.join(i.split(',')[:3]+['ab,ab']+i.split(',')[5:])) #I am imposing the F1 genotypes
                         elif LRT_075 is min(LRT_05, LRT_075, LRT_025) and LRT_075 < 3.841 and Poi_075 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 0.75 model is the most likely
-                            lz.append(','.join(i.split(',')[:3]+['ab'])+','+i.split(',')[4]+','.join(i.split(',')[5:]).replace('bb','ab')) #given that the male is 'aa', the female has to be 'ab'
+                            lz.append(','.join(i.split(',')[:3]+['ab'])+','+i.split(',')[4]+','+','.join(i.split(',')[5:]).replace('bb','ab')) #given that the male is 'aa', the female has to be 'ab'
                         elif LRT_025 is min(LRT_05, LRT_075, LRT_025) and LRT_025 < 3.841 and Poi_025 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 25 model is the most likely
                              if ','.join(i.split(',')[1:3])=='ab,ab':
-                                 lz.append(','.join(i.split(',')[:3]+['aa,ab'])+','+','.join(i.split(',')[5:]).replace('bb','aa')) #here I am reverting a '
+                                 lz.append(','.join(i.split(',')[:3]+['ab,aa'])+','+','.join(i.split(',')[5:]).replace('bb','aa')) #here I am reverting a '
     #                        lz.append(','.join(i.split(',')[:3]+['bb']+i.split(',')[4:])) #given that the male is 'aa', the only possible model is a female 'bb'
                              else:
                                  lz.append(','.join(i.split(',')[:3]+['ab,ab']+i.split(',')[5:])) #force the model to become 'ab,ab'                        
@@ -513,7 +513,7 @@ for fl in files:
         
     lwt4 = ','.join(lwt3).replace('\n,', '\n')
     f2 = str(fl).split('new_')[1]
-    output = '/Volumes/group_dv/personal/DValenzano/Jan2014/F1_inference/Go_families/inf-'+f2 #fl[84:]                  
+    output = '/Volumes/group_dv/personal/DValenzano/Jan2014/F1_inference/Go_families/prova/inf-'+f2 #fl[84:]                  
     z = open(output,'w')
     z.write(lwt4)
     z.close()
