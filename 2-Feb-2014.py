@@ -255,7 +255,7 @@ for fl in files:
     #                        lz.append(','.join(i.split(',')[:4]+['bb']+i.split(',')[5:])) #given that the female is 'aa', then the male got to be 'bb'
                             lz.append(','.join(i.split(',')[:3]+['ab,ab']+i.split(',')[5:])) #force the F1 'abab' model                    
                         elif LRT_075 is min(LRT_05, LRT_075, LRT_025) and LRT_075 < 3.841 and Poi_075 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 0.75 model is the most likely
-                            lz.append(','.join(i.split(',')[:4]+['ab']+i.split(',')[5:])) #given that the male is 'aa', the female has to be 'ab'
+                            lz.append(','.join(i.split(',')[:4]+['ab'])+','+','.join(i.split(',')[5:]).replace('bb','ab')) #given that the male is 'aa', the female has to be 'ab'
                         elif LRT_025 is min(LRT_05, LRT_075, LRT_025) and LRT_025 < 3.841 and Poi_025 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 25 model is the most likely
                             if ','.join(i.split(',')[1:3])=='ab,ab':
                                 lz.append(','.join(i.split(',')[:3]+['aa,ab'])+','+','.join(i.split(',')[5:]).replace('bb','aa')) #bbab becomes aaab if P0 are abxab
@@ -268,7 +268,7 @@ for fl in files:
                         if LRT_05 is min(LRT_05, LRT_075, LRT_025) and LRT_05 < 3.841 and Poi_05 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = freq_b model is the most likely
                             lz.append(','.join(i.split(',')[:4]+['ab']+i.split(',')[5:])) #given that the male is 'ab', then the female got to be 'ab'
                         elif LRT_075 is min(LRT_05, LRT_075, LRT_025) and LRT_075 < 3.841 and Poi_075 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 0.75 model is the most likely
-                            lz.append(','.join(i.split(',')[:4]+['aa']+i.split(',')[5:])) #given that the male is 'ab', the female has to be 'aa'
+                            lz.append(','.join(i.split(',')[:4]+['aa'])+','+','.join(i.split(',')[5:]).replace('bb','ab')) #given that the male is 'ab', the female has to be 'aa'
                         elif LRT_025 is min(LRT_05, LRT_075, LRT_025) and LRT_025 < 3.841 and Poi_025 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 25 model is the most likely
                             if ','.join(i.split(',')[1:3])=='ab,ab':
                                 lz.append(','.join(i.split(',')[:3]+['aa,ab'])+','+','.join(i.split(',')[5:]).replace('bb','aa')) #bbab becomes aaab if P0 are abxab
@@ -282,7 +282,7 @@ for fl in files:
                             lz.append(','.join(i.split(',')[:3]+['ab,ab']+i.split(',')[5:])) #forcing the F1 'abab' model                        
     #                        lz.append(','.join(i.split(',')[:4]+['aa']+i.split(',')[5:])) #given that the male is 'bb', then the female got to be 'aa'
                         elif LRT_075 is min(LRT_05, LRT_075, LRT_025) and LRT_075 < 3.841 and Poi_075 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 0.75 model is the most likely
-                            lz.append(','.join(i.split(',')[:3]+['ab,aa']+i.split(',')[5:])) #forcing the F1 'abaa' model        
+                            lz.append(','.join(i.split(',')[:3]+['ab,aa'])+','+','.join(i.split(',')[5:]).replace('bb','ab')) #forcing the F1 'abaa' model        
     #                        lz.append(','.join(i.split(',')[:4]+['aa']+i.split(',')[5:])) #given that the male is 'bb', the only possible model is a female 'aa'
                         elif LRT_025 is min(LRT_05, LRT_075, LRT_025) and LRT_025 < 3.841 and Poi_025 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 25 model is the most likely
     #                        lz.append(','.join(i.split(',')[:4]+['ab']+i.split(',')[5:])) #given that the male is 'bb', the only possible model is a female 'ab'
@@ -424,15 +424,17 @@ for fl in files:
                         if LRT_05 is min(LRT_05, LRT_075, LRT_025) and LRT_05 < 3.841 and Poi_05 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = freq_b model is the most likely
                             lz.append(','.join(i.split(',')[:3]+['ab,ab']+i.split(',')[5:]))
                            #  lz.append(','.join(daL[j][:3]+['ab,ab']+daL[j][5:]))
+                        elif LRT_075 is min(LRT_05, LRT_075, LRT_025) and LRT_075 < 3.841 and Poi_075 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 0.75 model is the most likely
+                           lz.append(','.join(i.split(',')[:5])+','+','.join(i.split(',')[5:]).replace('bb','ab')) #lz.append(','.join(i.split(',')[:3]+['aa,ab']+i.split(',')[5:]))
                         elif LRT_025 is min(LRT_05, LRT_075, LRT_025) and LRT_025 < 3.841 and Poi_025 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 25 model is the most likely
-                            lz.append(','.join(i.split(',')[:5])+','+','.join(i.split(',')[5:]).replace('bb','aa'))
+                            lz.append(','.join(i.split(',')[:5])+','+','.join(i.split(',')[5:]).replace('bb','ab'))
     #                        lz.append(','.join(i.split(',')[:3]+['bb,ab']+i.split(',')[5:])) #I keep the male F1 as a het
     #                                    lz.append(','.join(daL[j][:3]+['bb,ab']+daL[j][5:]))
                         else: #this includes the possibility of aaxaa F1, which are useless from a linkage standpoint, and therefore removed from the analysis
                             pass  
                 
                     elif i.split(',')[0] in ac_aaab:  #elif i.split(',')[0] in ac_aaab:  
-                        lz.append(i) #or maybe pass?
+                        lz.append(','.join(i.split(',')[:5])+','+','.join(i.split(',')[5:]).replace('bb','ab')) #lz.append(i) #or maybe pass?
                         
                         
                         
