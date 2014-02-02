@@ -15,7 +15,7 @@ values = []
 
 for i in range(10, len(gos[0].split(','))):
                values.append(gos[1].split('\n')[0].split(',')[i]+gos[1].split('\n')[1].split(',')[i])
-d = dict(zip(keys, values)) # A dictionary that goes like this: { '8563': 'aabb', '63406': 'aabb', ...}
+d = dict(zip(keys, values)) # A dictionary that goes something like this: { '8563': 'aabb', '63406': 'aabb', ...}
 
 #lst = []
 
