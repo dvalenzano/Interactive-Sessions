@@ -190,7 +190,7 @@ for fl in files:
                     if LRT_05 is min(LRT_05, LRT_075, LRT_025) and LRT_05 < 3.841 and Poi_05 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = freq_b model is the most likely
                         lz.append(','.join(i.split(',')[:3]+['ab,ab']+i.split(',')[5:]))
                     elif LRT_075 is min(LRT_05, LRT_075, LRT_025) and LRT_075 < 3.841 and Poi_075 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 0.75 model is the most likely
-                        lz.append(','.join(i.split(',')[:3]+['aa,ab']+i.split(',')[5:])) #I keep the male F1 as a het
+                        lz.append(','.join(i.split(',')[:3]+['aa,ab'])+','+','.join(i.split(',')[5:]).replace('bb','ab')) #I keep the male F1 as a het
                     elif LRT_025 is min(LRT_05, LRT_075, LRT_025) and LRT_025 < 3.841 and Poi_025 is max(Poi_05, Poi_075, Poi_025): #if the freq_a = 25 model is the most likely
     #                    lz.append(','.join(i.split(',')[:3]+['bb,ab']+i.split(',')[5:])) #I keep the male F1 as a het
                         if ','.join(i.split(',')[1:3])=='ab,ab':
