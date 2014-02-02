@@ -3,7 +3,7 @@
 
 # <codecell>
 
-f7 = open('/Volumes/group_dv/personal/DValenzano/Jan2014/F1_inference/Go_families/inf-fam_7.csv', 'rU').read()
+f7 = open('/Volumes/group_dv/personal/DValenzano/Jan2014/F1_inference/Go_families/inf-fam_1.1.csv', 'rU').read()
 
 # <codecell>
 
@@ -44,7 +44,7 @@ lx
 
 # <codecell>
 
-ltest = [i for i in lz2.split('\n')[:-1] if i.split(',')[1]=='aa-bb']
+ltest = [i for i in lz2.split('\n')[:-1] if i.split(',')[1]=='bb-ab']
 
 # <codecell>
 
@@ -147,7 +147,6 @@ for f in files:
         z = open(o, 'w')
         z.write(fin)
         z.close()
-
 
 # <codecell>
 
