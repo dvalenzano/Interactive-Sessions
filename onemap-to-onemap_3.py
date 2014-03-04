@@ -18,7 +18,7 @@ qtlepi = '/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_%s/inf-fam_%s.
 qtlepiinp = open(qtlepi, 'rU').read()
 
 #qtlepiinp2 = qtlepiinp.split('\n')[0] +'\n'+','.join([i+'\n' for i in qtlepiinp.split('\n')[1:-1] if float(i.split(',')[6]) < 0.05/mar ]).replace('\n,','\n')
-
+# this line below adds a Bonferroni correction and selects only interactive markers with highly significant interactions
 qtlepiinp2 = qtlepiinp.split('\n')[0] +'\n'+','.join([i+'\n' for i in qtlepiinp.split('\n')[1:-1] if float(i.split()[6]) < 0.05/mar ]).replace('\n,','\n')
 
 inpl = ','.join([ i.split()[1] +'\n'+i.split()[3]+'\n' for i in qtlepiinp2.split('\n')[1:-1]]).replace('\n,','\n')
