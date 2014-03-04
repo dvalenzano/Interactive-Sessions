@@ -3,6 +3,12 @@
 
 # <codecell>
 
+assoc = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_7/inf-fam_7.assoc.linear', 'rU').read()
+assocs = ','.join([ ','.join(i.split())+'\n' for i in assoc.split('\n')]).replace('\n,','\n')
+z = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_7/inf-fam_7.assoc.linear.csv', 'w')
+z.write(assocs)
+z.close()
+
 survbysex_fam7 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_7/inf-fam_7.assoc.linear.csv', 'rU').read()
 
 # <codecell>
@@ -30,7 +36,6 @@ Below I do the same for family 8:
 # <codecell>
 
 assoc = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_8/inf-fam_8.assoc.linear', 'rU').read()
-import re
 assocs = ','.join([ ','.join(i.split())+'\n' for i in assoc.split('\n')]).replace('\n,','\n')
 z = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_8/inf-fam_8.assoc.linear.csv', 'w')
 z.write(assocs)
@@ -49,10 +54,13 @@ z = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_8/fam_8_survby
 z.write(sbs_8)
 z.close()
 
+# <markdowncell>
+
+# Now family 14
+
 # <codecell>
 
 assoc = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_14/inf-fam_14.assoc.linear', 'rU').read()
-import re
 assocs = ','.join([ ','.join(i.split())+'\n' for i in assoc.split('\n')]).replace('\n,','\n')
 z = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_14/inf-fam_14.assoc.linear.csv', 'w')
 z.write(assocs)
@@ -68,10 +76,13 @@ z = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_14/fam_14_surv
 z.write(sbs_14)
 z.close()
 
+# <markdowncell>
+
+# Now family 1.1
+
 # <codecell>
 
 assoc = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_1.1/inf-fam_1.1.assoc.linear', 'rU').read()
-import re
 assocs = ','.join([ ','.join(i.split())+'\n' for i in assoc.split('\n')]).replace('\n,','\n')
 z = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_1.1/inf-fam_1.1.assoc.linear.csv', 'w')
 z.write(assocs)
