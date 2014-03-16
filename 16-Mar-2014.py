@@ -138,6 +138,57 @@ z = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_7/subdir/sex_8
 z.write(f8_2)
 z.close()
 
+# <markdowncell>
+
+# Next goal: test overlap of sex-specific surv-QTL in 4 families
+
+# <codecell>
+
+ff7 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_7/fem/fam_7f_sqtl.assoc.linear', 'rU').read()
+fm7 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_7/mal/fam_7m_sqtl.assoc.linear', 'rU').read()
+
+ff14 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_14/fem/fam_14f_sqtl.assoc.linear', 'rU').read()
+fm14 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_14/mal/fam_14m_sqtl.assoc.linear', 'rU').read()
+
+ff8 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_8/fem/fam_8f_sqtl.assoc.linear', 'rU').read()
+fm8 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_8/mal/fam_8m_sqtl.assoc.linear', 'rU').read()
+
+ff1_1 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_1.1/fem/fam_1.1f_sqtl.assoc.linear', 'rU').read()
+fm1_1 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_1.1/mal/fam_1.1m_sqtl.assoc.linear', 'rU').read()
+
+# <codecell>
+
+ff7s = [ i[-1] for i in [i.split() for i in ff7.split('\n')[:-1]][1:] if i[-1] != 'NA' ]
+fm7s = [ i[-1] for i in [i.split() for i in fm7.split('\n')[:-1]][1:] if i[-1] != 'NA' ]
+ff14s = [ i[-1] for i in [i.split() for i in ff14.split('\n')[:-1]][1:] if i[-1] != 'NA' ]
+fm14s = [ i[-1] for i in [i.split() for i in fm14.split('\n')[:-1]][1:] if i[-1] != 'NA' ]
+ff8s = [ i[-1] for i in [i.split() for i in ff8.split('\n')[:-1]][1:] if i[-1] != 'NA' ]
+fm8s = [ i[-1] for i in [i.split() for i in fm8.split('\n')[:-1]][1:] if i[-1] != 'NA' ]
+ff1_1s = [ i[-1] for i in [i.split() for i in ff1_1.split('\n')[:-1]][1:] if i[-1] != 'NA' ]
+fm1_1s = [ i[-1] for i in [i.split() for i in fm1_1.split('\n')[:-1]][1:] if i[-1] != 'NA' ]
+
+# <codecell>
+
+p_val= 'p-val,'+','.join(ff7s) + ','+','.join(fm7s) + ','+ ','.join(ff14s) +','+ ','.join(fm14s)+ ','+','.join(ff8s) + ','+ ','.join(fm8s) +','+ ','.join(ff1_1s)+','+ ','.join(fm1_1s)
+
+# <codecell>
+
+group = 'group,'+(len(ff7s)*'f7,')[:-1] + ','+(len(fm7s)*'m7,')[:-1]+','+(len(ff14s)*'f14,')[:-1] + ','+(len(fm14s)*'m14,')[:-1]+','+(len(ff8s)*'f8,')[:-1] + ','+(len(fm8s)*'m8,')[:-1]+','+(len(ff1_1s)*'f1.1,')[:-1] + ','+(len(fm1_1s)*'m1.1,')[:-1]
+
+# <codecell>
+
+fams = p_val+'\n'+group
+
+# <codecell>
+
+famst = ','.join([ ','.join(list(i)+['\n']).replace(',\n','\n') for i in zip(*[i.split(',') for i in fams.split('\n')])]).replace('\n,','\n')
+
+# <codecell>
+
+z = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fams-sqtl.csv', 'w')
+z.write(famst)
+z.close()
+
 # <codecell>
 
 
