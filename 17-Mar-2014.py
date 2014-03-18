@@ -15,7 +15,7 @@ ff8 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_8/fem/fam_8f
 fm8 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_8/mal/fam_8m_sqtl.assoc.linear', 'rU').read()
 
 ff1_1 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_1.1/fem/fam_1.1f_sqtl.assoc.linear', 'rU').read()
-fm1_1 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_1.1/mal/fam_1.1m_sqtl.assoc.linear', 'rU').read()
+fm1_1 = open('/Volumes/group_dv/personal/DValenzano/Mar2014/plink/fam_1.1/mal/fam_1.1m_sqtl.assoc.linear', 'rU').read()    
 
 # <codecell>
 
@@ -91,6 +91,16 @@ len(Set(sig14f)) #markers significant in fam 14
 
 len(Set(sig7f) & Set(sig14f))
 
+# <codecell>
+
+len(Set(sig7f) & Set(sig8f))
+
+# <codecell>
+
+print (
+"significant markers in fam 7 females: " +  str(len(Set(sig7f))) + "\nsignificant markers in fam 8 females: "+  str(len(Set(sig8f)))
+)
+
 # <markdowncell>
 
 # Significant overlapping markers between family 7 and 14 among males:
@@ -141,6 +151,14 @@ sig1_1m2 = [i for i in pm1_1.keys() if pm1_1[i] != 'NA' and float(pm1_1[i]) <0.0
 # <codecell>
 
 len(Set(sig7m2) & Set(sig14m2))
+
+# <markdowncell>
+
+# How many markers are significant among males and females in each fam?
+
+# <codecell>
+
+print 'in fam7 there are ' + str(len(Set(sig7f) & Set(sig7m)))+' shared markers between males and females\n'+ 'in fam14 there are ' + str(len(Set(sig14f) & Set(sig14m)))+' shared markers between males and females\n'+ 'in fam8 there are ' + str(len(Set(sig8f) & Set(sig8m)))+' shared markers between males and females\n'+ 'in fam1.1 there are ' + str(len(Set(sig1_1f) & Set(sig1_1m)))+' shared markers between males and females'   
 
 # <markdowncell>
 
