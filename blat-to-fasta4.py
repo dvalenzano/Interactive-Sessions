@@ -43,7 +43,7 @@ for i in scaffolds:
         
 lsj = ','.join(ls).replace('\n,','\n')
 
-output = blatout[:-3]+'fa'
+output = blatout[:-4]+'_btf.fa'
 
 z = open(output, 'w')
 z.write(lsj)
