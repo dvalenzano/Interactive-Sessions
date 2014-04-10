@@ -70,6 +70,7 @@ z.close()
 ########################################        Below the general version #2      ########################################      
 ########################################################################################################################
 # This includes 50 randomly chosen markers for cross Go
+
 gender = raw_input('What gender are you interested in processing [fem, mal]?\n')
 gender_init = gender[0]
 family = raw_input('What family are you interested in processing?\n')
