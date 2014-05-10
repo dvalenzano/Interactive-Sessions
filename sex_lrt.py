@@ -53,7 +53,7 @@ for i in mk:
         if mab == 0:
             pass
         else:
-            lz.append(i+':\t-\tinf\t0.00\n')
+            lz.append(i+':\t-\t40\t0.00\n')
     elif freq_fab == 1:
         pass
     else:
