@@ -71,7 +71,7 @@ z.close()
 
 # In[6]:
 
-tab3fas = open('/Volumes/group_dv/personal/DValenzano/Apr2014/plink/AAo/fem/fam_1f_sqtl.assoc.linear', 'rU').read()
+tab3fas = open('/Volumes/group_dv/personal/DValenzano/Apr2014/plink/AAo/fem/fam_3f_sqtl.assoc.linear', 'rU').read()
 low1 = [ i+'\n' for i in tab3fas.split('\n')[1:-1] if i.split()[-1] != 'NA' and float(i.split()[-1]) < 0.05]
 
 # <markdowncell>
