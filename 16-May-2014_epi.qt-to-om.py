@@ -89,7 +89,7 @@ thr = numpy.percentile(pvalsf, 1)
 #inpl = ','.join([ i.split()[1] +'\n'+i.split()[3]+'\n' for i in qtlepiinp2.split('\n')[1:-1]]).replace('\n,','\n')
 #new_ominpe = str(len(ominp.split('\n')[1].split('\t')[-1].split(',')))+' '+str(len(Set(inpl.split('\n')[:-1])))+'\n'+','.join([ i+'\n' for i in ominp.split('\n')[1:] if i.split('\t')[0][1:] in Set(inpl.split('\n')[:-1])]).replace('\n,','\n')
 
-qtlepi3 = qtlepiinp.split('\n')[0] +'\n'+','.join([i+'\n' for i in qtlepiinp.split('\n')[1:-1] if float(i.split()[6]) < thr ]).replace('\n,','\n')           
+qtlepi3 = qtlepiinp.split('\n')[0] +'\n'+','.join([i+'\n' for i in qtlepiinp.split('\n')[1:-1] if float(i.split()[6]) < 0.01*thr ]).replace('\n,','\n')           
 inpl3 = ','.join([ i.split()[1] +'\n'+i.split()[3]+'\n' for i in qtlepi3.split('\n')[1:-1]]).replace('\n,','\n')
 new_ominpe3 = str(len(ominp.split('\n')[1].split('\t')[-1].split(',')))+' '+str(len(Set(inpl3.split('\n')[:-1])))+'\n'+','.join([ i+'\n' for i in ominp.split('\n')[1:] if i.split('\t')[0][1:] in Set(inpl3.split('\n')[:-1])]).replace('\n,','\n')
 
