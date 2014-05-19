@@ -81,7 +81,7 @@ lso = 'Marker'+'\tLRT\tLOD\tp_val\n'+','.join(ls)[:-1].replace('\n,','\n')+','.j
 
 # In[ ]:
 
-out = minp.split('_')[0]+'_lrt.csv'
+out = m.split('_')[0]+'_lrt.csv'
 z = open(out, 'w')
 z.write(lso)
 z.close()
