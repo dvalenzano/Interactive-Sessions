@@ -52,6 +52,14 @@ for i in mk:
     if fab == 0:
         if mab == 0:
             pass
+        
+###################The next two lines of code were added on 19 May, 2014 ###############
+
+        elif fnab < 7: 
+            pass
+
+########################################################################################
+
         else:
             lz.append(i+':\t-\t40\t0.00\n')
     elif freq_fab == 1:
