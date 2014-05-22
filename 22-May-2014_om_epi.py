@@ -52,9 +52,9 @@ pvals_1f = [i.split()[-1] for i in qtlepi_1f.split('\n')[1:-1]]
 pvalsf_1f = map(float, pvals_1f)
 thr_1f = numpy.percentile(pvalsf_1f, 1)
 
-qtlepi_1m_n =[ i  for i in qtlepi_1m.split('\n')[1:-1] if float(i.split()[-1])<(thr_1m)]
-qtlepi_3m_n =[ i  for i in qtlepi_3m.split('\n')[1:-1] if float(i.split()[-1])<(thr_3m)]
-qtlepi_1f_n =[ i  for i in qtlepi_1f.split('\n')[1:-1] if float(i.split()[-1])<(thr_1f)]
+qtlepi_1m_n =[ i  for i in qtlepi_1m.split('\n')[1:-1] if float(i.split()[-1])<thr_1m]
+qtlepi_3m_n =[ i  for i in qtlepi_3m.split('\n')[1:-1] if float(i.split()[-1])<thr_3m]
+qtlepi_1f_n =[ i  for i in qtlepi_1f.split('\n')[1:-1] if float(i.split()[-1])<thr_1f]
 
 
 # In[14]:
