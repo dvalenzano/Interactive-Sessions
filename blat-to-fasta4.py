@@ -36,13 +36,19 @@ values = inp_trs[1:len(inp_trs):2]
 
 d = dict(zip(keys, values)) #this is a dictionary that contains scaffold names as keys and corresponding sequences as values
 
-ls = []
-for i in scaffolds:
-    if ','.join(scaffolds[0].split('_')[:-1]).replace(',','_') in d.keys():
-        ls.append(','.join(scaffolds[0].split('_')[:-1]).replace(',','_') + '\n' + d[','.join(scaffolds[0].split('_')[:-1]).replace(',','_')]+'\n')
-        
-lsj = ','.join(ls).replace('\n,','\n')
-
+#ls = []
+#for i in scaffolds:
+#    if ','.join(scaffolds[0].split('_')[:-1]).replace(',','_') in d.keys():
+#        ls.append(','.join(scaffolds[0].split('_')[:-1]).replace(',','_') + '\n' + d[','.join(scaffolds[0].split('_')[:-1]).replace(',','_')]+'\n')
+#lsj = ','.join(ls).replace('\n,','\n')
+ 
+########THIS FOLLOWING UPDATE ADDED ON 09-JUN-2014#######################
+ 
+ls = [i+'\n'+d[i.split('_')[0]]+'\n' for i in scaffolds if i.split('_')[0] in keys]
+lsj = ','.join([i+'\n'+d[i.split('_')[0]]+'\n' for i in scaffolds if i.split('_')[0] in keys]).replace('\n,','\n')
+ 
+########END OF UPDATE#################################################### 
+ 
 output = blatout[:-4]+'_btf.fa'
 
 z = open(output, 'w')
