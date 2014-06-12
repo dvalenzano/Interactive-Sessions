@@ -27,7 +27,7 @@ epi_8fk = list(Set(','.join([ i.split(',')[0]+','+i.split(',')[5]   for i in epi
 
 # In[80]:
 
-head = 'marker,LG,pos,7me,14me,8me,7fe,14me,8fe\n'
+head = 'marker,LG,pos,m7e,m14e,m8e,f7e,f14e,f8e\n'
 
 
 # In[81]:
