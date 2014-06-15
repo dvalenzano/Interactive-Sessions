@@ -63,7 +63,7 @@ probes2f = ','.join(probes2).replace('\n,','\n')
 
 # In[12]:
 
-z = open('/Volumes/group_dv/personal/DValenzano/Jun2014/y-markers_Go_probes_2.fa', 'w')
+z = open('/Volumes/group_dv/personal/DValenzano/Jun2014/y-markers_Go_6probes.fa', 'w')
 z.write(probes2f)
 z.close()
 
