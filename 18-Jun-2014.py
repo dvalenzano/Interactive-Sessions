@@ -409,7 +409,64 @@ print(
 )
 
 
+# aae_all = map(set, (aae1m_l, aae3m_l, aae1f_l))
+# aaeu_all = set.intersection(*aae_all)
 # 
+# aae_1m_3m = map(set, (aae1m_l, aae3m_l))
+# aaeu_1m_3m = set.intersection(*aae_1m_3m)
+# 
+# aae_1m_1f = map(set, (aae1m_l, aae1f_l))
+# aaemu_1m_1f = set.intersection(*aae_1m_3f)
+# 
+# aae_3m_1f = map(set, (aae3m_l, aae1f_l))
+# aaeu_3m_1f = set.intersection(*aaem_3m_1f)
+# 
+# print(
+# 'overlap between aae1m, aae3m, aae1f: \n' + str(len(aaeu_all)) +' markers'
+# )
+# 
+# print(
+# 'overlap between aae1m, aae3m: \n' + str(len(aaeu_1m_3m)) +' markers'
+# )
+# 
+# print(
+# 'overlap between aae1m, aae1f: \n' + str(len(aaeu_1m_1f)) +' markers'
+# )
+#  
+# print(
+# 'overlap between aae3m, aae1f: \n' + str(len(aaemu_3m_1f)) +' markers'
+# )
+
+# In[105]:
+
+aae_all = map(set, (aae1m_l, aae3m_l, aae1f_l))
+aaeu_all = set.intersection(*aae_all)
+
+aae_1m_3m = map(set, (aae1m_l, aae3m_l))
+aaeu_1m_3m = set.intersection(*aae_1m_3m)
+
+aae_1m_1f = map(set, (aae1m_l, aae1f_l))
+aaeu_1m_1f = set.intersection(*aae_1m_1f)
+
+aae_3m_1f = map(set, (aae3m_l, aae1f_l))
+aaeu_3m_1f = set.intersection(*aae_3m_1f)
+
+print(
+'overlap between aae1m, aae3m, aae1f: \n' + str(len(aaeu_all)) +' markers'
+)
+
+print(
+'overlap between aae1m, aae3m: \n' + str(len(aaeu_1m_3m)) +' markers'
+)
+
+print(
+'overlap between aae1m, aae1f: \n' + str(len(aaeu_1m_1f)) +' markers'
+)
+ 
+print(
+'overlap between aae3m, aae1f: \n' + str(len(aaeu_3m_1f)) +' markers'
+)
+
 
 # In[ ]:
 
