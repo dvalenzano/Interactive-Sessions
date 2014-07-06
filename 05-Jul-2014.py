@@ -126,9 +126,25 @@ z.write(aa_fin)
 z.close()
 
 
-# In[181]:
+# The following generates an output that is compatible with qqman R package  
+# http://gettinggeneticsdone.blogspot.de/2014/05/qqman-r-package-for-qq-and-manhattan-plots-for-gwas-results.html
+
+# In[199]:
+
+aa3_sorted = [[i[0]] +map(str, i[1:]) for i in aa1_sorted ]
+aa3_fin = 'SNP,Chr,BP,q-days,q-daysM,q-daysF,q-daysRes\n'+ ','.join([ ','.join(i)+'\n' for i in aa3_sorted ]).replace('\n,','\n')
+g3_sorted = [[i[0]] +map(str, i[1:]) for i in g1_sorted ]
+g3_fin = 'SNP,Chr,BP,q-days,q-daysM,q-daysF,q-daysRes\n'+ ','.join([ ','.join(i)+'\n' for i in g3_sorted ]).replace('\n,','\n')
 
 
+# In[200]:
+
+z = open('/Volumes/group_dv/personal/DValenzano/Jul2014/qqvall_g.csv','w')
+z.write(g3_fin)
+z.close()
+z = open('/Volumes/group_dv/personal/DValenzano/Jul2014/qqvall_aa.csv','w')
+z.write(aa3_fin)
+z.close()
 
 
 # In[ ]:
