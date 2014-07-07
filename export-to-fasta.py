@@ -7,3 +7,4 @@ fa = '%s.fa' % input[:-4]
 z = open(fa, 'w')
 z.write(fasta)
 z.close()
+
