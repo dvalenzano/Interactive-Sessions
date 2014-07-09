@@ -63,7 +63,7 @@ class sortColumn2(object):
         self.kv = [ i.split(',')[-1] for i in self.pval.split('\n')[1:-2] ]
         self.kd = dict(zip(self.kg, self.kv))
         self.t = self.tosave.split('\n')
-        self.t2 = [','.join([i.split(',')[0]]+i.split(',')[1].split('_')[:2]+[kd[i.split(',')[0]]]) for i in self.t[1:-1]]
+        self.t2 = [','.join([i.split(',')[0]]+i.split(',')[self.col].split('_')[:2]+[kd[i.split(',')[0]]]) for i in self.t[1:-1]]
         self.t3 = [j.split(',')[0] for j in [i for i in self.t[1:-1] if i.split(',')[15]!= ''] if sum(map(float, j.split(',')[15:]))<4] 
         self.t4 = [k.split(',')[0] for k in  [j for j in [i for i in self.t[1:-1] if i.split(',')[15]!= ''] if sum(map(float, j.split(',')[15:]))<4] if k.split(',')[14]=='-' ]
         self.ls = []
