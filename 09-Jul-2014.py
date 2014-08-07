@@ -1,5 +1,7 @@
 
+# Modified on 30-Jul-2014.py
 # coding: utf-8
+
 
 #### Goal: To extract a subset of significant markers from g and aa cross
 
