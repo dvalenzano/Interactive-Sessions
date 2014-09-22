@@ -5,7 +5,6 @@
 
 # Goal: To generate a plot where the median lifespan +/- the sd is plotted at each position for the AA, AB, BB genotypes. 
 # Additionally, I will also plot the manhattan plot 
-
 g_days = open('/Volumes/group_dv/personal/DValenzano/Sep2014/g_days.csv', 'rU').read()
 g_daysM = open('/Volumes/group_dv/personal/DValenzano/Sep2014/g_daysM.csv', 'rU').read()
 g_daysF = open('/Volumes/group_dv/personal/DValenzano/Sep2014/g_daysF.csv', 'rU').read()
@@ -65,34 +64,34 @@ med_gFd_2 = [numpy.median([int(g_daysFt[2][5:][k])  for k in [i for i, j in enum
 std_gFd_2 = [numpy.std([int(g_daysFt[2][5:][k])  for k in [i for i, j in enumerate(g_daysFt[n][5:]) if j == '2'] ])   for n in range(3,len(g_daysFt))]
 
 
-# In[90]:
+# In[94]:
 
 # I will now make a new file with marker name, median and std for each genotype
-gzh = 'Marker, LG, cM, -log(qval), Med0, std0, Med1, std1, med2, std2\n'
+gzh = 'Marker, LG, cM, neg_log(qval), med0, std0, med1, std1, med2, std2\n'
 gz0 = [i[0] + ','+ i[1].split('_')[0]+','+i[1].split('_')[1]+','+str((-1)*math.log(float(i[2]))) for i in g_dayst[3:]]
-gzz = ['Marker, LG, cM, -log(qval), Med0, std0, Med1, std1, med2, std2\n']+[ gz0[i]+','+str(med_gd_0[i])+','+str(std_gd_0[i])+','+str(med_gd_1[i])+','+str(std_gd_1[i])+','+str(med_gd_2[i])+','+str(std_gd_2[i])+'\n' for i in range(len(gz0))]  
+gzz = [gzh]+[ gz0[i]+','+str(med_gd_0[i])+','+str(std_gd_0[i])+','+str(med_gd_1[i])+','+str(std_gd_1[i])+','+str(med_gd_2[i])+','+str(std_gd_2[i])+'\n' for i in range(len(gz0))]  
 gzzz = ','.join(gzz).replace('-0.0','0.0').replace('\n,','\n')
 
 
-# In[91]:
+# In[95]:
 
 # I will now make a new file with marker name, median and std for each genotype
-gMzh = 'Marker, LG, cM, -log(qval), Med0, std0, Med1, std1, med2, std2\n'
+gMzh = 'Marker, LG, cM, -log(qval), med0, std0, med1, std1, med2, std2\n'
 gMz0 = [i[0] + ','+ i[1].split('_')[0]+','+i[1].split('_')[1]+','+str((-1)*math.log(float(i[2]))) for i in g_daysMt[3:]]
-gMzz = ['Marker, LG, cM, -log(qval), Med0, std0, Med1, std1, med2, std2\n']+[ gMz0[i]+','+str(med_gMd_0[i])+','+str(std_gMd_0[i])+','+str(med_gMd_1[i])+','+str(std_gMd_1[i])+','+str(med_gMd_2[i])+','+str(std_gMd_2[i])+'\n' for i in range(len(gMz0))]  
+gMzz = [gMzh]+[ gMz0[i]+','+str(med_gMd_0[i])+','+str(std_gMd_0[i])+','+str(med_gMd_1[i])+','+str(std_gMd_1[i])+','+str(med_gMd_2[i])+','+str(std_gMd_2[i])+'\n' for i in range(len(gMz0))]  
 gMzzz = ','.join(gMzz).replace('-0.0','0.0').replace('\n,','\n')
 
 
-# In[92]:
+# In[96]:
 
 # I will now make a new file with marker name, median and std for each genotype
-gFzh = 'Marker, LG, cM, -log(qval), Med0, std0, Med1, std1, med2, std2\n'
+gFzh = 'Marker, LG, cM, -log(qval), med0, std0, med1, std1, med2, std2\n'
 gFz0 = [i[0] + ','+ i[1].split('_')[0]+','+i[1].split('_')[1]+','+str((-1)*math.log(float(i[2]))) for i in g_daysFt[3:]]
-gFzz = ['Marker, LG, cM, -log(qval), Med0, std0, Med1, std1, med2, std2\n']+[ gFz0[i]+','+str(med_gFd_0[i])+','+str(std_gFd_0[i])+','+str(med_gFd_1[i])+','+str(std_gFd_1[i])+','+str(med_gFd_2[i])+','+str(std_gFd_2[i])+'\n' for i in range(len(gFz0))]  
+gFzz = [gFzh]+[ gFz0[i]+','+str(med_gFd_0[i])+','+str(std_gFd_0[i])+','+str(med_gFd_1[i])+','+str(std_gFd_1[i])+','+str(med_gFd_2[i])+','+str(std_gFd_2[i])+'\n' for i in range(len(gFz0))]  
 gFzzz = ','.join(gFzz).replace('-0.0','0.0').replace('\n,','\n')
 
 
-# In[93]:
+# In[97]:
 
 z = open('/Volumes/group_dv/personal/DValenzano/Sep2014/qtl-direction-analysis/ReAutoReqtlresults/gdays_tab.csv', 'w')
 z.write(gzzz)
