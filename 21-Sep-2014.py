@@ -4,6 +4,8 @@
 # Goal: to generate a data file to analyze the direction of the survival QTL. By direction I mean whether
 # an allele associated to longer lifespan is derived from the long-lived or from the short-lived P0
 
+# THIS CODE HAS BEEN DEBUGGED ON 29-SEP-2014
+
 # In[1]:
 
 # all the q-val from the rf analysis:
