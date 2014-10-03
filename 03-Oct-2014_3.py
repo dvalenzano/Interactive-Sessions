@@ -208,15 +208,15 @@ aaReszzz = ','.join(aaReszz).replace('-0.0','0.0').replace('\n,','\n')
 
 # In[18]:
 
-z = open('/Volumes/group_dv/personal/DValenzano/Sep2014/qtl-direction-analysis/ReAutoReqtlresults/aadays2_tab.csv', 'w')
+z = open('/Volumes/group_dv/personal/DValenzano/Oct2014/aadays2_tab.csv', 'w')
 z.write(aazzz)
 z.close()
 
-z = open('/Volumes/group_dv/personal/DValenzano/Sep2014/qtl-direction-analysis/ReAutoReqtlresults/aadaysM2_tab.csv', 'w')
+z = open('/Volumes/group_dv/personal/DValenzano/Oct2014/aadaysM2_tab.csv', 'w')
 z.write(aaMzzz)
 z.close()
 
-z = open('/Volumes/group_dv/personal/DValenzano/Sep2014/qtl-direction-analysis/ReAutoReqtlresults/aadaysF2_tab.csv', 'w')
+z = open('/Volumes/group_dv/personal/DValenzano/Oct2014/aadaysF2_tab.csv', 'w')
 z.write(aaFzzz)
 z.close()
 
