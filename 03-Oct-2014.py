@@ -57,7 +57,7 @@ g7mzzz = ','.join(g7mzz).replace('-0.0','0.0').replace('\n,','\n')
 
 # I will now make a new file with marker name, median and std for each genotype
 g14mzh = 'Marker, LG, cM, neg_log(pval), med0, std0, med1, std1, med2, std2\n'
-g14mz0 = [i[0] + ','+ '14'+','+i[1]+','+str((-1)*math.log(float(i[2]))) for i in g_days7mt[3:]]
+g14mz0 = [i[0] + ','+ '14'+','+i[1]+','+str((-1)*math.log(float(i[2]))) for i in g_days14mt[3:]]
 g14mzz = [g14mzh]+[ g14mz0[i]+','+str(med_g14md_0[i])+','+str(std_g14md_0[i])+','+str(med_g14md_1[i])+','+str(std_g14md_1[i])+','+str(med_g14md_2[i])+','+str(std_g14md_2[i])+'\n' for i in range(len(g14mz0))]  
 g14mzzz = ','.join(g14mzz).replace('-0.0','0.0').replace('\n,','\n')
 
