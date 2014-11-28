@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# Goal: to plot p-values calculated with plink on LG3 (rqtl map) with a manhattan plot on R
+# Goal: to plot p-values calculated with plink on LG3 (rqtl map)
 
 # In[8]:
 
@@ -43,10 +43,43 @@ fins = sorted(fin, key=lambda x: (int(x[1]), (float(x[2]))))
 finsj = 'SNP,chr,pos,p-val\n'+','.join([','.join(i) for i in fins ]).replace('\n,','\n')
 
 
-# In[59]:
+# In[65]:
 
-z = open('/Volumes/group_dv/personal/DValenzano/Nov2014/G-cross/om_manhplot_in.csv','w')
+z = open('/Volumes/group_dv/personal/DValenzano/Nov2014/G-cross/om_manhplot7m_in.csv','w')
 z.write(finsj)
+z.close()
+
+
+# In[60]:
+
+# Now the same for fam14 
+gfile14m = open('/Volumes/group_dv/personal/DValenzano/Apr2014/plink/fam_14/mal/fam_14m_sqtl.assoc.linear', 'rU').read()
+
+
+# In[61]:
+
+sig14m = [ i.split()[1]+','+i.split()[-1] for i in gfile14m.split('\n')[:-1] ]
+
+
+# In[66]:
+
+sig14mk = [i.split(',')[0] for i in sig14m[1:] ]
+sig14mv = [i.split(',')[1] for i in sig14m[1:] ]
+sig14md = dict(zip(sig14mk, sig14mv))
+
+
+# In[67]:
+
+shared14m = Set(lmk) & Set(sig14mk)
+
+
+# In[69]:
+
+fin14m = [ [i]+ld[i]+[sig14md[i]+'\n'] for i in shared14m ]
+fin14ms = sorted(fin14m, key=lambda x: (int(x[1]), (float(x[2]))))
+fin14msj = 'SNP,chr,pos,p-val\n'+','.join([','.join(i) for i in fin14ms ]).replace('\n,','\n')
+z = open('/Volumes/group_dv/personal/DValenzano/Nov2014/G-cross/om_manhplot14m_in.csv','w')
+z.write(fin14msj)
 z.close()
 
 
