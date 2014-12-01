@@ -6,8 +6,8 @@ inp = open(inp_ut, 'rU').read()
 #a = open('/Volumes/group_dv/group/Ig_Asya/IgD_scaffold.fa', 'rU').read()
 string = inp.split('\n')[0]+'\n'+','.join(inp.split('\n')[1:]).replace(',','')
 
-heptamer = raw_input('Please type the heptamer sequence?\n')
-nonamer = raw_input('Please type the nonamer sequence?\n')
+heptamer = raw_input('Please type the heptamer sequence\n')
+nonamer = raw_input('Please type the nonamer sequence\n')
 
 import re
 inp1 = heptamer+'\w'*12+nonamer
