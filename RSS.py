@@ -40,6 +40,20 @@ z = open(out23, 'w')
 z.write(line23)
 z.close()
 
-#This is the additional code to also keep track of the position of the regions within the scaffold
-#heno12 = [re.search(i,string) for i in hep_non12 ]
-#[i.span() for i in heno12 ]
+#class Find_RSS(object):
+#    "in each scaffold, searches for heptamers and nonamers and saves them"
+#    def __init__(self, filein):
+#        self.filein = filein
+#        self.header = self.filein.split('\n')[0]
+#        self.body = self.filein.split('\n')[1]
+#        
+#        self.hep_non12 = re.findall(inp1, self.body)
+#        self.heno12 = [re.search(i,self.body) for i in self.hep_non12 ]
+#        self.hen12 = [list(j) for j in zip(self.hep_non12, [i.span() for i in self.heno12])]
+#        self.line12 = self.header+',Sequence,start,end\n'+','.join([i[0] + ','+','.join([str(x) for x in i[1]])+'\n' for i in self.hen12 ] ).replace('\n,','\n')
+    
+#        self.hep_non23 = re.findall(inp1, self.body)
+#        self.heno23 = [re.search(i,self.body) for i in self.hep_non23 ]
+#        self.hen23 = [list(j) for j in zip(self.hep_non23, [i.span() for i in self.heno23])]
+#        self.line23 = self.header+',Sequence,start,end\n'+','.join([i[0] + ','+','.join([str(x) for x in i[1]])+'\n' for i in self.hen23 ] ).replace('\n,','\n')
+   
