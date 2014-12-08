@@ -32,7 +32,7 @@ line23 = 'Sequence,start,end\n'+','.join([i[0] + ','+','.join([str(x) for x in i
 #hn23 = ','.join([ i+'\n' for i in hep_non23 ])
 
 #out12 = inp_ut[:-3]+'_12.txt'
-out23 = inp_ut[:-3]+'_23.txt'
+out23 = inp_ut[:-3]+'_out.txt'
 
 #z = open(out12, 'w')
 #z.write(hn12.replace('\n,','\n'))
