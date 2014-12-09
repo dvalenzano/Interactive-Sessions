@@ -25,7 +25,7 @@ import math
 
 # Now I need to select which markers to use for the analysis
 # I will use the same as those defined as "peak" in file /Volumes/group_dv/personal/DValenzano/Oct2014/g_lg3_peak.fa
-selected = ['40077', '7106']
+selected = ['46347', '40077', '7106']
 
 m0 = g_daysMt[:3]+[i for i in g_daysMt[3:] if i[0] in selected]
 f0 = g_daysFt[:3]+[i for i in g_daysFt[3:] if i[0] in selected]
