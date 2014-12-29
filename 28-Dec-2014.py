@@ -2,33 +2,33 @@
 #http://www.hydrol-earth-syst-sci.net/11/1633/2007/hess-11-1633-2007.pdf
 
 
-# In[9]:
+# In[82]:
 
 import math
 import numpy as np
 
 
-# In[304]:
+# In[257]:
 
 data = open('/Volumes/group_dv/personal/DValenzano/Dec2014/meteo_data.txt', 'rU').read()
 
 
-# In[305]:
+# In[258]:
 
 stations = data.split('\n\n')[:-1]
 
 
-# In[208]:
+# In[259]:
 
 onestation = data.split('\n\n')[5].split('\n')
 
 
-# In[310]:
+# In[260]:
 
 onestation
 
 
-# In[311]:
+# In[261]:
 
 class getKG(object):
 
@@ -40,7 +40,8 @@ class getKG(object):
         self.Ttot = sum(self.T)
         self.Ptot = sum(self.P)
         self.MAT = np.mean(self.T) # mean annual temperature
-        self.MAP = np.mean(self.P) # mean annual precipitation
+#        self.MAP = np.mean(self.P) # mean annual precipitation
+        self.MAP = self.Ptot
         self.Thot = max(self.T) # temperature of the hottest month
         self.Tcol = min(self.T) # temperature of the coldest mont
         self.Tmon10 = len([ i for i in self.T if i>10]) # n. of months where the temperature is above 10
@@ -75,25 +76,25 @@ class getKG(object):
         if self.MAP < 10.0*self.Pthr:
             if self.MAP < 5.0*self.Pthr:
                 if self.MAT>=18:
-                    self.KG_class = 'BWh (Arid-Desert-Hot)'
+                    self.KG_class = 'BWh,Arid-Desert-Hot'
                 else:
-                    self.KG_class = 'BWk (Arid-Desert-Cold)'                
+                    self.KG_class = 'BWk,Arid-Desert-Cold'                
                     
-            elif self.MPA >= 5.0*self.Pthr:
+            elif self.MAP >= 5.0*self.Pthr:
                 if self.MAT>=18:
-                    self.KG_class = 'BSh (Arid-Steppe-Hot)'
+                    self.KG_class = 'BSh,Arid-Steppe-Hot'
                 else:
-                    self.KG_class = 'BSk (Arid-Steppe-Cold)'
+                    self.KG_class = 'BSk,Arid-Steppe-Cold'
                 
-        elif self.Tcol <= 18.0:
+        elif self.Tcol >= 18.0:
             if self.Pdry >= 60.0:
-                self.KG_class = 'Af (Tropical Rainforest)'
+                self.KG_class = 'Af,Tropical Rainforest'
 
             else:
                 if self.Pdry >= (100.0 - self.MAP/25.0):
-                    self.KG_class = 'Am (Tropical Monsoon)'
+                    self.KG_class = 'Am,Tropical Monsoon,'
                 else:
-                    self.KG_class = 'Am (Tropical Savannah)'
+                    self.KG_class = 'Am,Tropical Savannah'
 
         elif self.Thot > 10.0:
             
@@ -101,65 +102,65 @@ class getKG(object):
             
                 if self.Psdry <40.0 and self.Psdry < self.Pwwet/3.0:
                     if self.Thot >= 22.0:
-                        self.KG_class = 'CSa (Temperate-DrySummer-HotSummer)'
+                        self.KG_class = 'CSa,Temperate-DrySummer-HotSummer'
                     elif self.Tmon10 >= 4.0: 
-                        self.KG_class = 'CSb (Temperate-DrySummer-WarmSummer)'
+                        self.KG_class = 'CSb,Temperate-DrySummer-WarmSummer'
                     elif 1.0<=self.Tmon10<4.0:
-                        self.KG_class = 'CSc (Temperate-DrySummer-ColdSummer)'
+                        self.KG_class = 'CSc,Temperate-DrySummer-ColdSummer'
                 
                 elif self.Pwdry < self.Pswet/10.0:
                     if self.Thot >= 22.0:
-                        self.KG_class = 'CWa (Temperate-DryWinter-HotSummer)'
+                        self.KG_class = 'CWa,Temperate-DryWinter-HotSummer'
                     elif self.Tmon10 >= 4.0:
-                        self.KG_class = 'CWb (Temperate-DryWinter-WarmSummer)'
+                        self.KG_class = 'CWb,Temperate-DryWinter-WarmSummer'
                     elif 1.0 <= self.Tmon10<4.0:
-                        self.KG_class = 'CWc (Temperate-DryWinter-ColdSummer)'
+                        self.KG_class = 'CWc,Temperate-DryWinter-ColdSummer'
                 
                 else:
                     if self.Thot >= 22.0:
-                        self.KG_class = 'CFa (Temperate-HotSummer)'
+                        self.KG_class = 'CFa,Temperate-HotSummer'
                     elif self.Tmon10 >= 4:
-                        self.KG_class = 'CFb (Temperate-WarmSummer)'
+                        self.KG_class = 'CFb,Temperate-WarmSummer'
                     elif 1.0<=self.Tmon10<4.0:
-                        self.KG_class = 'CFc (Temperate-ColdSummer)'
+                        self.KG_class = 'CFc,Temperate-ColdSummer'
                 
             elif self.Tcol <= 0.0: #cold climate
                 
                 if self.Psdry < 40.0 and self.Psdry < self.Pwwet/3.0:
                     if self.Thot >= 22.0:
-                        self.KG_class = 'DSa (Cold-DrySummer-HotSummer)'
+                        self.KG_class = 'DSa,Cold-DrySummer-HotSummer'
                     elif self.Tmon10 >= 4.0:
-                        self.KG_class = 'DSb (Cold-DrySummer-WarmSummer)'
+                        self.KG_class = 'DSb,Cold-DrySummer-WarmSummer'
                     elif self.Tcold < -38.0:
-                        self.KG_class = 'DSd (Cold-DrySummer-VeryColdWinter)'
+                        self.KG_class = 'DSd,Cold-DrySummer-VeryColdWinter'
                     else:
-                        self.KG_class = 'DSc (Cold-DrySummer-ColdSummer)'
+                        self.KG_class = 'DSc,Cold-DrySummer-ColdSummer'
                      
                 elif self.Pwdry < self.Pswet/10.0:
                     if self.Thot >= 22.0:
-                        self.KG_class = 'DWa (Cold-DryWinter-HotSummer)'
+                        self.KG_class = 'DWa,Cold-DryWinter-HotSummer'
                     elif self.Tmon10 >= 4.0:
-                        self.KG_class = 'DWb (Cold-DryWinter-WarmSummer)'
+                        self.KG_class = 'DWb,Cold-DryWinter-WarmSummer'
                     elif self.Tcold < -38.0:
-                        self.KG_class = 'DWd (Cold-DryWinter-VeryColdWinter)'
+                        self.KG_class = 'DWd,Cold-DryWinter-VeryColdWinter'
                     else:
-                        self.KG_class = 'DWc (Cold-DryWinter-ColdSummer)'
+                        self.KG_class = 'DWc,Cold-DryWinter-ColdSummer'
                     
                 else:
                     if self.Thot >= 22.0:
-                        self.KG_class = 'DFa (Cold-HotSummer)'
+                        self.KG_class = 'DFa,Cold-HotSummer'
                     elif self.Tmon10 >= 4.0:
-                        self.KG_class = 'DFb (Cold-WarmSummer)'
+                        self.KG_class = 'DFb,Cold-WarmSummer'
                     elif self.Tcold < -38.0:
-                        self.KG_class = 'DFd (Cold-VeryColdWinter)'
+                        self.KG_class = 'DFd,Cold-VeryColdWinter'
                     else:
-                        self.KG_class = 'DFc (Cold-ColdSummer)'
+                        self.KG_class = 'DFc,Cold-ColdSummer'
             
         elif self.Thot < 10:
             if self.Thot>0:
-                self.KG_class = 'ET (Polar-Tundra)'
+                self.KG_class = 'ET,Polar-Tundra'
             else:
-                self.KG_class = 'EF (Polar-Frost)'
+                self.KG_class = 'EF,Polar-Frost'
         
         else:
             self.KG_class = 'NA'
@@ -167,37 +168,55 @@ class getKG(object):
 ###################################### END OF LOOP ######################################
 
 
-# In[312]:
+# In[262]:
+
+prova = getKG(stations[1])
+prova.KG_class
+
+
+# In[263]:
 
 ls = []
 for i in stations:
     st = getKG(i)
-    ls.append(st.locality +','+ st.lon +','+ st.lat + ','+st.KG_class+'\n')
-    
+    ls.append(st.locality +','+ st.lon +','+ st.lat + ','+st.KG_class)
 
 
-# In[315]:
+# In[264]:
 
-vil = getKG(stations[-1])
-vil.Pthr
-
-
-# In[321]:
-
-vil.MAP
+from sets import Set
+c_classes  = Set([i.split(',')[-2] for i in ls ])
+list(classes)
 
 
-# In[322]:
+# In[265]:
 
-vil.Pthr
-
-
-# In[292]:
-
-lz = ','.join(ls).replace('\n,','\n')
+Classes  = Set([i.split(',')[-1] for i in ls ])
+list(Classes)
 
 
-# In[294]:
+# In[266]:
+
+c_values = ['8','1','13','11','5','3']
+dv = dict(zip(c_classes, c_values))
+
+
+# In[267]:
+
+dv
+
+
+# In[268]:
+
+ls2 = [ i+','+dv[i.split(',')[3]]+'\n' for i in ls ]
+
+
+# In[269]:
+
+lz = 'locality,longitude,latitude,KG-class,KG-descr,KG_numcode\n'+','.join(ls2).replace('\n,','\n')
+
+
+# In[270]:
 
 z = open('/Volumes/group_dv/personal/DValenzano/Dec2014/KG_Rinput.csv', 'w')
 z.write(lz)
