@@ -1,9 +1,6 @@
 # Goal: to generate a new file for cross AAo and Go with the corrected p-values based on min FDR
 # The generated file has corrected p values genome-wide and linkage group by linkage group
 
-
-# In[1]:
-
 ptab = open('/Volumes/group_dv/personal/DValenzano/Jan2015/aao-pval.csv', 'rU').read()
 qtab = open('/Volumes/group_dv/personal/DValenzano/Jul2014/RF_qtl/aao_qval.tsv', 'rU').read()
 
@@ -63,6 +60,11 @@ aao_adjv = [i.split()[2:] for i in aao_adj.split('\n')[1:-1]]
 aao_adjd = dict(zip(aao_adjk,aao_adjv))
 
 
+# In[ ]:
+
+
+
+
 # In[52]:
 
 len(aaok) == len(aao_adjk)
@@ -85,46 +87,42 @@ z.write(aao_new2)
 z.close()
 
 
-# In[90]:
+# In[118]:
 
 # Now same as above, for cross Go
 go = open('/Volumes/group_dv/personal/DValenzano/May2014/go32014_all_pos.csv', 'rU').read()
 gos = go.split('\n')[:-1]
 gos2 = [i.replace('"','')   for i in gos if i.split(',')[0] != '""' ]
-
-goss = sorted(gos2, key=lambda x: ( float(x.split(',')[1]), float(x.split(',')[2])))
-#go = sorted(aa0_sorted, key= lambda x: (x[1], x[2]))
-
-
-# In[96]:
-
-gossk = [ i.split(',')[0] for i in goss]
-gossv = [ i.split(',')[1:] for i in goss]
-gossd = dict(zip(gossk, gossv))
-
-
-# In[97]:
-
 go_adj = open('/Volumes/group_dv/personal/DValenzano/Jan2015/go_days_padj.csv', 'rU').read()
 
 
-# In[98]:
+# In[119]:
 
 go_adjk = [i.split()[1] for i in go_adj.split('\n')[1:-1]]
 go_adjv = [i.split()[2:] for i in go_adj.split('\n')[1:-1]]
 go_adjd = dict(zip(go_adjk,go_adjv))
 
 
-# In[108]:
+# In[120]:
 
 from sets import Set
-goset =  Set(gossk) & Set(go_adjk) 
+goset =  Set([i.split(',')[0] for i in gos2]) & Set(go_adjk) 
 gos = list(goset)
 
 
-# In[109]:
+# In[124]:
 
-go_new = [[i] + gossd[i] + go_adjd[i] for i in gos]
+gos3 = [ i  for i in gos2 if i.split(',')[0] in gos]
+goss = sorted(gos3, key=lambda x: ( float(x.split(',')[1]), float(x.split(',')[2])))
+
+gossk = [ i.split(',')[0] for i in goss]
+gossv = [ i.split(',')[1:] for i in goss]
+gossd = dict(zip(gossk, gossv))
+
+
+# In[129]:
+
+go_new = [[i] + gossd[i] + go_adjd[i] for i in gossk]
 go_new2 = 'maker,LG,cM,pval,p.adj\n'+','.join([','.join(i)+'\n' for i in go_new]).replace('\n,','\n')
 z = open('/Volumes/group_dv/personal/DValenzano/Jan2015/go_pq.csv', 'w')
 z.write(go_new2)
