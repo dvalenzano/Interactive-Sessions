@@ -1,6 +1,11 @@
 
 # Goal: to reduce the number of markers for the qvalue calculation in cross 1 and cross 2 to those that are mapped on the linkage map only
 
+
+# coding: utf-8
+
+# In[9]:
+
 g_pq2 = open('/Volumes/group_dv/personal/DValenzano/Jan2015/go_pq2.csv', 'rU').read()
 aa_pq2 = open('/Volumes/group_dv/personal/DValenzano/Jan2015/aao_pq2.csv', 'rU').read()
 
@@ -48,23 +53,29 @@ gp2 = [ [gqm[i]]+gp.split('\n')[1:-1][i].split()[1:] for i in range(len(gp.split
 aap2 = [ [aaqm[i]]+aap.split('\n')[1:-1][i].split()[1:] for i in range(len(aap.split('\n')[1:-1]))]
 
 
-# In[35]:
+# In[39]:
+
+gp3 = [i for i in gp2 if i[0] in gk ]
+aap3 = [i for i in aap2 if i[0] in aak ]
+
+
+# In[40]:
 
 g_head = 'marker,'+','.join(gq.split('\n')[0].split())+'\n'
 aa_head = 'marker,'+','.join(aaq.split('\n')[0].split())+'\n'
 
-gp3 = g_head + ','.join([','.join(i)+'\n' for i in gp2]).replace('\n,','\n')
-aap3 = aa_head + ','.join([','.join(i)+'\n' for i in aap2]).replace('\n,','\n')
+gp4 = g_head + ','.join([','.join(i)+'\n' for i in gp3]).replace('\n,','\n')
+aap4 = aa_head + ','.join([','.join(i)+'\n' for i in aap3]).replace('\n,','\n')
 
 
-# In[37]:
+# In[41]:
 
 z = open('/Volumes/group_dv/personal/DValenzano/Jan2015/cross1_pvals.csv', 'w')
-z.write(gp3)
+z.write(gp4)
 z.close()
 
 z = open('/Volumes/group_dv/personal/DValenzano/Jan2015/cross2_pvals.csv', 'w')
-z.write(aap3)
+z.write(aap4)
 z.close()
 
 
