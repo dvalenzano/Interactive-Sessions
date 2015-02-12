@@ -57,7 +57,49 @@ fc2_ab = float(c2_ab)/float(c2_length)
 fc2_ab
 
 
-# In[ ]:
+# heterozygosity MZM-0703 from cross 1:
+
+# In[37]:
+
+c1_aa_ll = c1.split('\n')[2].split(',')[10:].count('aa')
+c1_bb_ll = c1.split('\n')[2].split(',')[10:].count('bb')
+c1_ab_ll = c1.split('\n')[2].split(',')[10:].count('ab')
+c1_length = len(c1.split('\n')[1].split(',')[10:])
+
+from sets import Set
+Set(c1.split('\n')[2].split(',')[10:])
+
+
+# In[38]:
+
+fc1_ab_ll = float(c1_ab_ll)/float(c1_length)
+
+
+# In[39]:
+
+fc1_ab_ll
+
+
+# In[43]:
+
+c2_aa_ll = c2.split('\n')[1].split(',')[10:].count('aa')
+c2_bb_ll = c2.split('\n')[1].split(',')[10:].count('bb')
+c2_ab_ll = c2.split('\n')[1].split(',')[10:].count('ab')
+c2_length = len(c2.split('\n')[1].split(',')[10:])
+
+from sets import Set
+Set(c2.split('\n')[1].split(',')[10:])
+
+
+# In[44]:
+
+fc2_ab_ll = float(c2_ab_ll)/float(c2_length)
+
+
+# In[45]:
+
+fc2_ab_ll
+
 
 
 
