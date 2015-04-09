@@ -134,13 +134,16 @@ z.write(gnew9)
 z.close()
 
 
-# In[124]:
+# In[128]:
 
 #Now I select a submatrix with only 190 markers, randomly chosen above
 gnew6red = gnew6[:8]+[i for i in gnew6 if i[0] in g2sm ]
+gnew6red = [i for i in gnew6red if i[0] != 'bl']
+gnew6red = [i for i in gnew6red if i[0] != 'mother']
+gnew6red = [i for i in gnew6red if i[0] != 'father']
 
 
-# In[126]:
+# In[129]:
 
 gnew7red = zip(*gnew6red)
 gnew8red = [','.join(list(i))+'\n' for i in gnew7red]
