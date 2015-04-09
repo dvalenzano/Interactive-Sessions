@@ -67,6 +67,14 @@ g2 = random.sample(homg, 190)
 g2s = sorted(g2, key=lambda row: (int(row.split(',')[1]), float(row.split(',')[2])))
 
 
+# In[132]:
+
+g2sj = ','.join([ i+'\n' for i in g2s]).replace('\n,','\n')
+z = open('/Volumes/group_dv/personal/DValenzano/Apr2015/Pisa0markers.csv','w')
+z.write(g2sj)
+z.close()
+
+
 # In[114]:
 
 g2sm = [i.split(',')[0] for i in g2s ] #these are the markers corresponding to the selected markers
@@ -151,6 +159,11 @@ gnew9red = ','.join(gnew8red).replace('\n,','\n')
 z = open('/Volumes/group_dv/personal/DValenzano/Apr2015/Pisa0red.csv','w')
 z.write(gnew9red)
 z.close()
+
+
+# In[130]:
+
+g2s
 
 
 # In[ ]:
