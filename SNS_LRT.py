@@ -66,7 +66,8 @@ LOD = LRT/4.6
 # In[105]:
 
 # More in general:
-def LOD(inp): #inp is a given marker full genotype
+def LOD(inp): #inp is a given marker full genotype - here we are defining a function "LOD", which passes as
+# argument any marker's genotype (the marker is defined as "inp")
     ma = [2*inp.count('aa')+inp.count('ab')] #count of 'a'
     mb = [2*inp.count('bb')+inp.count('ab')] #count of 'b'
     fa = float(ma[0])/float(ma[0]+mb[0]) #frequency of 'a'
