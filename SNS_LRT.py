@@ -81,6 +81,9 @@ def LOD(inp): #inp is a given marker full genotype
 
 # In[119]:
 
+# Below I use the p_rltl matrix, which is the transposed big matrix we started with. 
+# For the analyses on color and sex you will need to use as an input the sex or col matrices. 
+
 lods = [ LOD(i) for i in p_rltl[5:]] #lod scores for all the markers
 markers = [ i[0] for i in p_rltl[5:]] #list of markers
 lodtab = ['marker,LODscore\n']+[ ','.join(list(i))+'\n' for i in zip(markers, lods) ] 
