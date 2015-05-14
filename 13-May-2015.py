@@ -47,7 +47,7 @@ gossd = dict(zip(gossk, gossv))
 # In[19]:
 
 go_new = [[i] + gossd[i] + go_pd[i] for i in gossk]
-go_new2 = 'maker,LG,cM,sex,days,col,bl,weight,melanoma,weightM,weightF,weightRes,daysM,daysF,daysRes\n'+','.join([','.join(i)+'\n' for i in go_new]).replace('\n,','\n')
+go_new2 = 'marker,LG,cM,sex,days,col,bl,weight,melanoma,weightM,weightF,weightRes,daysM,daysF,daysRes\n'+','.join([','.join(i)+'\n' for i in go_new]).replace('\n,','\n')
 z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/May2015/go_p_sorted.csv', 'w')
 z.write(go_new2)
 z.close()
