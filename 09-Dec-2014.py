@@ -5,9 +5,9 @@
 
 # Goal: to generate the input file for the selected non-significant markers from LG 3
 
-g_days = open('/Volumes/group_dv/personal/DValenzano/Sep2014/g_days2.csv', 'rU').read()
-g_daysM = open('/Volumes/group_dv/personal/DValenzano/Sep2014/g_daysM2.csv', 'rU').read()
-g_daysF = open('/Volumes/group_dv/personal/DValenzano/Sep2014/g_daysF2.csv', 'rU').read()
+g_days = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Sep2014/g_days2.csv', 'rU').read()
+g_daysM = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Sep2014/g_daysM2.csv', 'rU').read()
+g_daysF = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Sep2014/g_daysF2.csv', 'rU').read()
 
 
 # In[3]:
@@ -24,7 +24,7 @@ import math
 # In[7]:
 
 # Now I need to select which markers to use for the analysis
-# I will use the same as those defined as "peak" in file /Volumes/group_dv/personal/DValenzano/Oct2014/g_lg3_peak.fa
+# I will use the same as those defined as "peak" in file /Volumes/group_dv/personal/DValenzano/month-by-month/Oct2014/g_lg3_peak.fa
 selected = ['46347', '40077', '7106']
 
 m0 = g_daysMt[:3]+[i for i in g_daysMt[3:] if i[0] in selected]
@@ -45,11 +45,11 @@ f2 = ','.join([','.join(i)+'\n' for i in f1]).replace('\n,','\n')
 
 # In[48]:
 
-z = open('/Volumes/group_dv/personal/DValenzano/Dec2014/m_selectedG.csv', 'w')
+z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Dec2014/m_selectedG.csv', 'w')
 z.write(m2)
 z.close()
 
-z = open('/Volumes/group_dv/personal/DValenzano/Dec2014/f_selectedG.csv', 'w')
+z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Dec2014/f_selectedG.csv', 'w')
 z.write(f2)
 z.close()
 
