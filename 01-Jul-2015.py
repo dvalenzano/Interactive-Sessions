@@ -1,3 +1,5 @@
+# Goal: To plot together results from different runs
+
 import numpy as np
 from scipy import interpolate
 import matplotlib.pyplot as plt
