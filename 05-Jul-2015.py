@@ -142,8 +142,8 @@ sc0_het_25k = red0[:2] #are the first 2 snapshots
 
 # In[32]:
 
-a = ','.join([str(i) for i in sc0_het_25k[0]]).replace(',',',0\n')+'\n'
-b = ','.join([str(i) for i in sc0_het_25k[1]]).replace(',',',1\n')+'\n'
+a = ','.join([str(i) for i in sc0_het_25k[0]]).replace(',',',0\n')+',0\n'
+b = ','.join([str(i) for i in sc0_het_25k[1]]).replace(',',',1\n')+',1\n'
 ab = 'het,group\n'+a+b
 
 
