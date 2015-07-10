@@ -135,24 +135,39 @@ cs0 = cp(s0)
 
 # In[18]:
 
-hcs0 = het(cs0.hetrz_mea)
-red0 = hcs0.loop2()
-sc0_het_25k = red0[:2] #are the first 2 snapshots
+#hcs0 = het(cs0.hetrz_mea)
+#red0 = hcs0.loop2()
+#sc0_het_25k = red0[:2] #are the first 2 snapshots
 
 
 # In[32]:
 
-a = ','.join([str(i) for i in sc0_het_25k[0]]).replace(',',',0\n')+',0\n'
-b = ','.join([str(i) for i in sc0_het_25k[1]]).replace(',',',1\n')+',1\n'
-ab = 'het,group\n'+a+b
+#a = ','.join([str(i) for i in sc0_het_25k[0]]).replace(',',',0\n')+',0\n'
+#b = ','.join([str(i) for i in sc0_het_25k[1]]).replace(',',',1\n')+',1\n'
+#ab = 'het,group\n'+a+b
 
 
 # In[34]:
 
-z = open('/Volumes/group_dv/personal/DValenzano/papers/simulation_arXiv/Figure3/first-run/first2runs.csv', 'w')
-z.write(ab)
-z.close()
+#z = open('/Volumes/group_dv/personal/DValenzano/papers/simulation_arXiv/Figure3/first-run/first2runs.csv', 'w')
+#z.write(ab)
+#z.close()
 
+# ADDED ON 06-JUL-2015
+hcs0 = het(cs0.hetrz_mea)
+red0 = hcs0.loop2()
+sc0_het_25k = red0[:10] #are the first 2 snapshots
+
+a = ','.join([str(i) for i in sc0_het_25k[0]]).replace(',',',0\n')+',0\n'
+b = ','.join([str(i) for i in sc0_het_25k[1]]).replace(',',',1\n')+',1\n'
+c = ','.join([str(i) for i in sc0_het_25k[3]]).replace(',',',3\n')+',3\n'
+d = ','.join([str(i) for i in sc0_het_25k[6]]).replace(',',',6\n')+',6\n'
+z = ','.join([str(i) for i in sc_het_60k]).replace(',',',z\n')+',z\n'
+abcdz = 'het,group\n'+a+b+c+d+z
+
+z = open('/Volumes/group_dv/personal/DValenzano/papers/simulation_arXiv/Figure3/first-run/first2runs.csv', 'w')
+z.write(abcdz)
+z.close()
 
 # In[ ]:
 
