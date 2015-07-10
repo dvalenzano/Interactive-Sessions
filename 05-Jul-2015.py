@@ -169,6 +169,28 @@ z = open('/Volumes/group_dv/personal/DValenzano/papers/simulation_arXiv/Figure3/
 z.write(abcdz)
 z.close()
 
+### BELOW, ADDED ON 10-Jul-2015
+
+sdcs = het(cs.hetrz_mea_sd)
+sd_red = sdcs.loop2()
+sc_sd_60k = sd_red[-1]
+
+sd_cs0 = het(cs0.hetrz_mea_sd)
+sd_red0 = sd_cs0.loop2()
+sd_sc0_het_25k = sd_red0[:10] #are the first 2 snapshots
+
+sd_a = ','.join([str(i) for i in sd_sc0_het_25k[0]]).replace(',',',0\n')+',0\n'
+sd_b = ','.join([str(i) for i in sd_sc0_het_25k[1]]).replace(',',',1\n')+',1\n'
+sd_c = ','.join([str(i) for i in sd_sc0_het_25k[3]]).replace(',',',3\n')+',3\n'
+sd_d = ','.join([str(i) for i in sd_sc0_het_25k[6]]).replace(',',',6\n')+',6\n'
+sd_z = ','.join([str(i) for i in sc_sd_60k]).replace(',',',z\n')+',z\n'
+sd_abcdz = 'het,group\n'+sd_a+sd_b+sd_c+sd_d+sd_z
+
+z = open('/Volumes/group_dv/personal/DValenzano/papers/simulation_arXiv/Figure3/het-sd.csv', 'w')
+z.write(sd_abcdz)
+z.close()
+
+
 # In[ ]:
 
 
