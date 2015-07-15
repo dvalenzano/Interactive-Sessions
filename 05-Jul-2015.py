@@ -202,8 +202,8 @@ repr60k_ctrl = cs.repr_rate_junk_in[-1] #control values for reproduction in the 
 
 rate_s = ','.join([str(i) for i in surv60k]).replace(',',',s\n')+',s\n' #survival
 rate_sc = ','.join([','.join([str(i) for i in [i]*71]) for i in surv60k_ctrl]).replace(',',',sc\n')+',sc\n' #survival ctrl value
-rate_r = ','.join([str(i) for i in repr60k]).replace(',',',s\n')+',s\n' #reproduction
-rate_rc = ','.join([','.join([str(i) for i in [i]*71]) for i in repr60k_ctrl]).replace(',',',sc\n')+',sc\n' #reproduction ctrl value
+rate_r = ','.join([str(i) for i in repr60k]).replace(',',',r\n')+',r\n' #reproduction
+rate_rc = ','.join([','.join([str(i) for i in [i]*71]) for i in repr60k_ctrl]).replace(',',',rc\n')+',rc\n' #reproduction ctrl value
 
 rate_sr = 'rate,group\n'+rate_s+rate_sc+rate_r+rate_rc
 
