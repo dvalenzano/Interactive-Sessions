@@ -193,5 +193,20 @@ z.close()
 
 # In[ ]:
 
+## THIS PART ADDED ON JULY 15, 2015
+#Below, I am generating the data for a figure on "Survival rate" and "Reproduction rate". 
+surv60k = cs.surv_rate_in[-1] #survival rate in the last stage
+surv60k_ctrl = cs.surv_rate_junk_in[-1] #control values for survival in the last stage
+repr60k = cs.repr_rate_in[-1] #survival rate in the last stage
+repr60k_ctrl = cs.repr_rate_junk_in[-1] #control values for reproduction in the last stage
 
+rate_s = ','.join([str(i) for i in surv60k]).replace(',',',s\n')+',s\n' #survival
+rate_sc = ','.join([','.join([str(i) for i in [i]*71]) for i in surv60k_ctrl]).replace(',',',sc\n')+',sc\n' #survival ctrl value
+rate_r = ','.join([str(i) for i in repr60k]).replace(',',',s\n')+',s\n' #reproduction
+rate_rc = ','.join([','.join([str(i) for i in [i]*71]) for i in repr60k_ctrl]).replace(',',',sc\n')+',sc\n' #reproduction ctrl value
 
+rate_sr = 'rate,group\n'+rate_s+rate_sc+rate_r+rate_rc
+
+z = open('/Volumes/group_dv/personal/DValenzano/papers/simulation_arXiv/Figure5/rate_surv-repr.csv', 'w')
+z.write(rate_sr)
+z.close()
