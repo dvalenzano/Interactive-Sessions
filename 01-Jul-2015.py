@@ -1,4 +1,4 @@
-# Goal: To plot together results from different runs
+# Goal: Simulation of genome evolution in the context of aging: this script allows to plot together results from different runs
 
 import numpy as np
 from scipy import interpolate
