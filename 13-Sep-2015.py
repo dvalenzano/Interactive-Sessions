@@ -131,7 +131,7 @@ l = [p,r]
 lt = zip(*l)
 #ltl = [list(i) for i in lt]
 ltl = ','.join([','.join(list(i))+'\n' for i in lt]).replace('\n,','\n')
-z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Sep2015/simul-paper/pop/popres.txt','w')
+z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Sep2015/simul-paper/pop/popres.csv','w')
 z.write(ltl)
 z.close()
 
