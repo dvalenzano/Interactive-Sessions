@@ -265,7 +265,7 @@ plt.hist(yt_16_sm_16, bins=10)
 plt.show()
 
 
-# In[20]:
+# In[104]:
 
 otu_L2 = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Feb2016/uBiome_paper/Figure4/OTU_tables/table_mc4000_sorted_L2.txt', 'rU').read()
 otuL2 = otu_L2.replace('\t',',').split('\n')[:-1]
@@ -288,9 +288,103 @@ sm16_L2 = SM16_L2.avg
 WT16_L2 = avg(WT_16wk_L2)
 wt16_L2 = WT16_L2.avg
 
-wt_16_sm_16 = [wt16_L2[i]-sm16_L2[i] for i in range(len(wt16_L2))]
+wt_16_sm_16 = [wt16_L2[i] - sm16_L2[i] for i in range(len(wt16_L2))]
 plt.hist(wt_16_sm_16, bins=5)
 plt.show()
+
+
+# In[116]:
+
+wt_16_sm_16_f = [float(wt16_L2[i])/float(sm16_L2[i]) for i in range(len(wt16_L2)) if sm16_L2[i] != 0.0]
+inp = [i for i in np.log2(wt_16_sm_16_f).tolist()]
+inp = [str(i) for i in inp]
+inp.remove('-inf')
+inp = map(float, inp)
+inp
+
+
+plt.hist(inp, bins = 5)
+plt.show()
+
+
+
+# In[121]:
+
+wt_16_wt_6_f = [float(wt16_L2[i])/float(wt6_L2[i]) for i in range(len(wt16_L2)) if wt16_L2[i] != 0.0]
+inp = [i for i in np.log2(wt_16_wt_6_f).tolist()]
+#inp = [str(i) for i in inp]
+#[ inp.remove('-inf') if '-inf' in inp ]
+#inp = map(float, inp)
+#inp
+#plt.hist(inp, bins = 5)
+#plt.show()
+
+out_wt16_wt6 = 'wt16_wt6,'+','.join([str(i) for i in inp])
+out_wt16_wt6 = out_wt16_wt6.replace(',','\n')
+
+z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Feb2016/uBiome_paper/Figure4/densityL2_wt16_wt6.csv', 'w')
+z.write(out_wt16_wt6)
+z.close()
+
+
+# In[140]:
+
+YT16_L2 = avg(YT_16wk_L2)
+yt16_L2 = YT16_L2.avg
+
+wt_16_yt_16_f = [float(wt16_L2[i])/float(yt16_L2[i]) for i in range(len(wt16_L2)) if yt16_L2[i] != 0.0]
+inp = [i for i in np.log2(wt_16_yt_16_f).tolist()]
+inp = [str(i) for i in inp]
+inp = [ i for i in inp if i != '-inf']
+inp = map(float, inp)
+#plt.hist(inp, bins = 5)
+#plt.show()
+out_wt16_yt16 = 'wt16_yt16,'+','.join([str(i) for i in inp])
+out_wt16_yt16 = out_wt16_yt16.replace(',','\n')
+
+z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Feb2016/uBiome_paper/Figure4/densityL2_wt16_yt16.csv', 'w')
+z.write(out_wt16_yt16)
+z.close()
+
+
+# In[142]:
+
+SM16_L2 = avg(SM_16wk_L2)
+sm16_L2 = SM16_L2.avg
+
+wt_16_sm_16_f = [float(wt16_L2[i])/float(sm16_L2[i]) for i in range(len(wt16_L2)) if sm16_L2[i] != 0.0]
+inp = [i for i in np.log2(wt_16_sm_16_f).tolist()]
+inp = [str(i) for i in inp]
+inp = [ i for i in inp if i != '-inf']
+inp = map(float, inp)
+plt.hist(inp, bins = 5)
+plt.show()
+#out_wt16_sm16 = 'wt16_sm16,'+','.join([str(i) for i in inp])
+#out_wt16_sm16 = out_wt16_sm16.replace(',','\n')
+
+#z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Feb2016/uBiome_paper/Figure4/densityL2_wt16_sm16.csv', 'w')
+#z.write(out_wt16_sm16)
+#z.close()
+
+
+# In[143]:
+
+ABX16_L2 = avg(ABX_16wk_L2)
+abx16_L2 = ABX16_L2.avg
+
+wt_16_abx_16_f = [float(wt16_L2[i])/float(abx16_L2[i]) for i in range(len(wt16_L2)) if abx16_L2[i] != 0.0]
+inp = [i for i in np.log2(wt_16_abx_16_f).tolist()]
+inp = [str(i) for i in inp]
+inp = [ i for i in inp if i != '-inf']
+inp = map(float, inp)
+plt.hist(inp, bins = 5)
+plt.show()
+#out_wt16_sm16 = 'wt16_sm16,'+','.join([str(i) for i in inp])
+#out_wt16_sm16 = out_wt16_sm16.replace(',','\n')
+
+#z = open('/Volumes/group_dv/personal/DValenzano/month-by-month/Feb2016/uBiome_paper/Figure4/densityL2_wt16_sm16.csv', 'w')
+#z.write(out_wt16_sm16)
+#z.close()
 
 
 # In[ ]:
