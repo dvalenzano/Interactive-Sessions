@@ -85,8 +85,7 @@ len(row2) == len(col_fpkmvsotu_str.split('\n'))
 
 # In[114]:
 
-tab1 = [row2[i]+col_fpkmvsotu_str.split('\n')[i] for i in range(len(row2))]
-
+tab1 = [row2[i]+','+col_fpkmvsotu_str.split('\n')[i] for i in range(len(row2))]
 
 # In[115]:
 
