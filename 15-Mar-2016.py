@@ -148,15 +148,19 @@ sns.distplot(fpkmvsotu_a);
 
 # In[ ]:
 
-fpkmvsotu_l2 = fpkmvsotu.split('\n')[:-1]
+from scipy import stats
 
+def loop_one_lr_r2(m1,otu): # this returns all the correlation coefficients between m1 and a given otu (otu)
+    ls = []
+    for i in m1:
+        ls.append(stats.linregress(i, otu)[0][1])    
+    return ','.join(map(str, ls))+'\n'
 
-# In[ ]:
+def loop_two_lr_r2(m1, m2):
+    ls = []
+    for j in m2:
+        ls.append(loop_one_lr_r2(m1, j))
+    return ','.join(ls).replace('\n,','\n')
 
-def rindex(row, thr):
-    ls = list('%s') % str(row)
-    for i in range(len(fpkmvsotu_l2[row].split(','))):
-        if abs(float(fpkmvsotu_l2[row].split(',')[i])) > thr:
-            ls.append(i)
-    return ls
+fpkmvsotu_lr_r2 = loop_two_lr_r2(rnaT, otuT)
 
