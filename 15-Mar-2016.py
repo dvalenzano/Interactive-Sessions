@@ -3,19 +3,19 @@
 
 # **Calculation of correlation coefficients between OTUs and fpkm values from microbiome data**
 
-# In[15]:
+# In[1]:
 
 import numpy as np
 from scipy.stats.stats import pearsonr
 
 
-# In[1]:
+# In[2]:
 
 rna = open('/Volumes/group_dv/personal/DValenzano/papers/uBiome0/data/rnaseq_fpkm_genes_sorted.csv', 'rU').read()
 otu = open('/Volumes/group_dv/personal/DValenzano/papers/uBiome0/data/rnaseq_merged_otu_table_sorted.csv','rU').read()
 
 
-# In[2]:
+# In[3]:
 
 rna1 = map(float, [ i.split(',')[1] for i in rna.split('\n') ][1:]) #that's a "1" as in "one"
 otu1 = map(float, [ i.split(',')[1] for i in otu.split('\n') ][1:])
@@ -27,7 +27,7 @@ rnal = [i.split(',') for i in rna.split('\n')] #that's a "l" as in "L"
 otul = [i.split(',') for i in otu.split('\n')]
 
 
-# In[11]:
+# In[5]:
 
 rnat = [ list(i) for i in zip(*rnal)][1:] 
 otut = [list(i) for i in zip(*otul) ][1:]
@@ -36,7 +36,7 @@ rnaT = [map(float, i[1:]) for i in rnat]
 otuT = [map(float, i[1:]) for i in otut]
 
 
-# In[53]:
+# In[6]:
 
 def loop_one(m1,otu): # this returns all the correlation coefficients between m1 and a given otu (otu)
     ls = []
@@ -45,7 +45,7 @@ def loop_one(m1,otu): # this returns all the correlation coefficients between m1
     return ','.join(map(str, ls))+'\n'
 
 
-# In[54]:
+# In[7]:
 
 def loop_two(m1, m2):
     ls = []
@@ -54,28 +54,28 @@ def loop_two(m1, m2):
     return ','.join(ls).replace('\n,','\n')
 
 
-# In[62]:
+# In[8]:
 
 fpkmvsotu = loop_two(rnaT, otuT)
 
 
 # Now I build the header (column name) and row name, as the transcripts and OTU IDs, respectively
 
-# In[89]:
+# In[9]:
 
 col = rnal[0][1:]
 row = otul[0][1:]
 
-drow = dict(zip(row, fpkmvsotu.split('\n')[:-1]))
-dcol = dict(zip(col, [ list(i) for i in zip(*fpkmvsotu.split('\n')[:-1])]))
+#drow = dict(zip(row, fpkmvsotu.split('\n')[:-1]))
+#dcol = dict(zip(col, [ list(i) for i in zip(*fpkmvsotu.split('\n')[:-1])]))
 
 
-# In[104]:
+# In[10]:
 
 fpkmvsotu_str = ','.join([','.join(map(str, i.split(',')))+'\n' for i in fpkmvsotu.split('\n')[:-1]]).replace('\n,','\n')[:-1]
 
 
-# In[112]:
+# In[11]:
 
 col_fpkmvsotu_str = ','.join(col)+'\n'+fpkmvsotu_str
 row2 = ['OTU'] + row
@@ -83,13 +83,21 @@ row2 = ['OTU'] + row
 len(row2) == len(col_fpkmvsotu_str.split('\n'))
 
 
-# In[114]:
+# In[17]:
 
-tab1 = [row2[i]+','+col_fpkmvsotu_str.split('\n')[i] for i in range(len(row2))]
+prova = row2[0]+','+col_fpkmvsotu_str.split('\n')[0]
+prova[:150]
 
-# In[115]:
 
-tab2 = ','.join([ i+'\n' for i in tab1]).replace('\n,','\n') 
+# In[18]:
+
+tab1 = [row2[i]+','+col_fpkmvsotu_str.split('\n')[i]+'\n' for i in range(len(row2))]
+
+tab2 = ','.join(tab1).replace('\n,','\n') 
+
+
+# In[ ]:
+
 z = open('/Volumes/group_dv/personal/DValenzano/papers/uBiome0/data/correlation.csv', 'w')
 z.write(tab2)
 z.close()
